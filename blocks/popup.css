@@ -1,0 +1,138 @@
+.popup{
+    font-family: "Inter", Arial, sans-serif;
+    display: flex;
+    align-items: cenrter;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none; 
+}
+
+.popup__is_open{
+    font-family: "Inter", Arial, sans-serif;
+    display: flex;
+    align-items: cenrter;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.popup__close-button{
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/popupclose.png);
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    padding: 0;
+    position: absolute;
+    top: -40px;
+    right:-40px
+}
+
+.popup__close-button:hover{
+    opacity: 60%;
+}
+
+.popup__content{
+    width: 430px;
+    height: 330px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+    top: 13%;
+}
+
+
+
+.popup__title{
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    font-style: normal;
+    line-height: 29.05px;
+    margin: 0;
+    padding-top: 34px;
+    padding-bottom: 54px;
+    padding-left: 36px;
+
+
+}
+
+.popup__form{
+    display: flex;
+    flex-direction: column;
+    width: 358px;
+    margin: 0 auto;
+}
+
+.popup__input-name{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    margin-bottom: 29.74px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 16.94px;
+}
+
+.popup__input-proffesion{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 16.94px;
+}
+
+.popup__submit{
+    background-color: black;
+    color: #FFFFFF;
+    width: 358px;
+    height: 50.15px;
+    margin-top: 48px;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.78px;
+    font-style: normal;
+    margin-bottom: 36.51px;
+}
+
+.popup__submit:hover{
+    opacity: 80%;
+}
+
+@media screen and (max-width: 600px){
+    .popup__content{
+        max-width: 282px;
+        height: 322px;
+    }
+
+    .popup__form{
+        max-width: 282px;
+    }
+
+    .popup__submit{
+        max-width: 282px;
+    }
+
+    .popup__close-button{
+        background-image: url(../images/CloseIcon320.png);
+        width: 26px;
+        height: 26px;
+        right: 0;
+    }
+}

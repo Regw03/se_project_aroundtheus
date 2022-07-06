@@ -1,0 +1,32 @@
+.header{
+    margin-top: 0;
+    margin-bottom: 40px;
+    max-width: 880px;
+    min-width: 320px;
+    width: 100%;
+    border-bottom: 1px solid rgba(84, 84, 84, 1);
+    box-sizing: border-box;
+}
+
+.header__title-logo{
+    max-width: 173px;
+    margin-bottom: 32px;
+}
+
+
+
+@media screen and (max-width: 905px) {
+    .header__title-logo{
+        padding: 0 27px;
+    }
+}
+
+@media  screen and (max-width: 600px) {
+    .header{
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+    .header__title-logo{
+        padding-left: 0 19px;
+    }
+}
