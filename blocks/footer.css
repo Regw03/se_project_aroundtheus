@@ -1,6 +1,5 @@
 .footer{
     align-self: flex-start;
-    font-family: "Inter", sans-serif;
     font-style: none;
     font-weight: 400;
     font-size: 14px;
@@ -16,7 +15,6 @@
 .footer__copywrite{
     align-self: flex-start;
     margin: 0;
-    font-family: "Inter", sans-serif;
     font-style: none;
     font-weight: 400;
     font-size: 14px;
