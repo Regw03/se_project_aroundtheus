@@ -31,7 +31,7 @@
   align-items: flex-end;
 }
 
-.profile__info-proffesion {
+.profile__info-profession {
   margin: 16px 0 0 0;
   min-width: 415px;
   font-size: 18px;
@@ -128,7 +128,7 @@
     padding-left: 10px;
   }
 
-  .profile__info-proffesion {
+  .profile__info-profession {
     font-size: 14px;
     line-height: 17px;
     min-width: 282px;

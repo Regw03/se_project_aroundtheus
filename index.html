@@ -33,7 +33,7 @@
           <div class="profile__content" id="content">
             <h1 class="profile__info-name" id="infoname">Jacques Cousteau</h1>
             <button class="profile__edit-button" type="button" id="edit"></button>
-            <p class="profile__info-proffesion" id="proffesion">Explorer</p>
+            <p class="profile__info-profession" id="profession">Explorer</p>
           </div>
           <button class="profile__add-button" type="button" id="add"></button>
         </section>
@@ -59,12 +59,14 @@
               name="name"
               placeholder="Name"
               type="text"
+              required
             />
             <input
-              class="popup__input-proffesion"
-              name="proffesion"
+              class="popup__input-profession"
+              name="profession"
               placeholder="Profession"
               type="text"
+              required
             />
             <button class="popup__submit" type="submit">Save</button>
           </form>

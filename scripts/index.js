@@ -38,12 +38,12 @@ const profileEditClose = document.querySelector(".popup__close-button");
 const profileSave = document.querySelector(".popup__submit");
 //wrappers
 const profileTitle = document.querySelector(".profile__info-name");
-const profileProffesion = document.querySelector(".profile__info-proffesion");
+const profileProfession = document.querySelector(".profile__info-profession");
 const popupEditForm = document.querySelector(".popup__form");
 const profileEditPopup = document.querySelector(".popup");
 // form data
 const nameInputValue = popupEditForm.querySelector(".popup__input-name");
-const proffesionInputValue = popupEditForm.querySelector(".popup__input-proffesion");
+const professionInputValue = popupEditForm.querySelector(".popup__input-profession");
 
 // card template
 
@@ -53,6 +53,8 @@ const cardListEl = document.querySelector(".elements__card-grid");
 
 
 profileEditButton.addEventListener("click", function() {
+    nameInputValue.value = profileTitle.textContent;
+    professionInputValue.value = profileProfession.textContent;
     profileEditPopup.classList.add("popup__is_open");
 });
 
@@ -64,18 +66,16 @@ profileEditClose.addEventListener("click", function(){
 popupEditForm.addEventListener("submit", (event) =>{
     event.preventDefault();
     const nameInputValue = event.target.name.value; 
-    const proffesionInputValue = event.target.proffesion.value;
+    const professionInputValue = event.target.profession.value;
     profileTitle.textContent = nameInputValue;
-    profileProffesion.textContent = proffesionInputValue;
+    profileProfession.textContent = professionInputValue;
     profileEditPopup.classList.remove("popup__is_open");
 
-})
+});
 
 
 // cards ellement 
-
-
-initialCards.forEach(function (cardData){
+function createCard (cardData){
   // clone template
   const cardElement = cardTemplate.cloneNode(true);
   // find card image
@@ -89,7 +89,14 @@ initialCards.forEach(function (cardData){
   // replace title
   titleEl.textContent = cardData.name;
   // append to list
-  cardListEl.appendChild(cardElement);
-});
+  return cardElement;
+};
+
+function renderCard (cardData){
+  const cardElement = createCard(cardData);
+  cardListEl.prepend(cardElement);
+}
+
+initialCards.forEach(renderCard);
 
 
