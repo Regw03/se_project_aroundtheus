@@ -49,7 +49,7 @@
         </p>
       </footer>
 
-      <div class="popup">
+      <div class="popup" id="edit-popup">
         <div class="popup__content">
           <h3 class="popup__title">Edit profile</h3>
           <button class="popup__close-button" type="button"></button>
@@ -72,7 +72,33 @@
           </form>
         </div>
       </div>
+
+      <div class="popup" id="add-popup">
+        <div class="popup__content">
+          <h3 class="popup__title">New Place</h3>
+          <button class="popup__close-button" type="button"></button>
+          <form class="popup__form" id="edit-profile-form" name="editform">
+            <input
+              class="popup__input-name"
+              name="title"
+              placeholder="Title"
+              type="text"
+              required
+            />
+            <input
+              class="popup__input-profession"
+              name="link"
+              placeholder="Image link"
+              type="text"
+              required
+            />
+            <button class="popup__submit" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+
     </div>
+
     <template id="card-template">
       <li class="elements__card">
         <img class="elements__card-image" src="" alt="" />
@@ -80,8 +106,11 @@
           <h1 class="elements__card-title"></h1>
           <button class="elements__card-button" type="button"></button>
         </div>
+         <button class="elements__trash-button" type="button"></button>
       </li>
     </template>
+
     <script defer src="./scripts/index.js"></script>
+
   </body>
 </html>

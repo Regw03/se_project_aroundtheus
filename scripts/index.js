@@ -33,6 +33,8 @@ const initialCards = [
 
 
 //buttons nodes
+const addCard = document.querySelector(".profile__add-button");
+const cardDelete = document.querySelector(".elements__trash-button");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditClose = document.querySelector(".popup__close-button");
 const profileSave = document.querySelector(".popup__submit");
@@ -40,7 +42,8 @@ const profileSave = document.querySelector(".popup__submit");
 const profileTitle = document.querySelector(".profile__info-name");
 const profileProfession = document.querySelector(".profile__info-profession");
 const popupEditForm = document.querySelector(".popup__form");
-const profileEditPopup = document.querySelector(".popup");
+const profileEditPopup = document.querySelector("#edit-popup");
+const addCardPopup = document.querySelector("#add-popup");
 // form data
 const nameInputValue = popupEditForm.querySelector(".popup__input-name");
 const professionInputValue = popupEditForm.querySelector(".popup__input-profession");
@@ -51,7 +54,8 @@ const cardTemplate = document.querySelector("#card-template").content.firstEleme
 const cardListEl = document.querySelector(".elements__card-grid");
 
 
-
+//  profile edit form
+ 
 profileEditButton.addEventListener("click", function() {
     nameInputValue.value = profileTitle.textContent;
     professionInputValue.value = profileProfession.textContent;
@@ -74,7 +78,17 @@ popupEditForm.addEventListener("submit", (event) =>{
 });
 
 
+//cards add form
+
+addCard.addEventListener("click", function(){
+    nameInputValue.value = profileTitle.textContent;
+    professionInputValue.value = profileProfession.textContent;
+    profileEditPopup.classList.add("popup__is_open");
+})
+
+
 // cards ellement 
+
 function createCard (cardData){
   // clone template
   const cardElement = cardTemplate.cloneNode(true);

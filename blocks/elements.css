@@ -27,6 +27,7 @@
     flex-direction: column;
     border-radius: 10px;
     background-color: white;
+    position: relative;
 }
 
 .elements__card-image{
@@ -78,6 +79,26 @@
 
 }
 
+.elements__trash-button{
+    background-color: transparent;
+    background-image: url(../images/Trash.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    appearance: none;
+    border: none;
+    width: 18px;
+    height: 19px;
+    position: absolute;
+    top: 18px;
+    right: 15px;
+
+}
+
+.elements__trash-button:hover{
+    cursor: pointer;
+    opacity: .5;
+    transform: matrix(0.7, 0.72, -0.71, 0.7, 0, 0);
+}
 
 
 @media screen and (max-width: 905px){
