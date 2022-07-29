@@ -15,7 +15,7 @@
     transition: visivility 0s 0.5s, opacity   0.5s linear;
 }
 
-.popup__is_open{
+.popup_is-open{
     visibility: visible;
     opacity: 1;
     pointer-events: all;

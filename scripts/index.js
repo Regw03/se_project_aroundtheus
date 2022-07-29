@@ -35,33 +35,43 @@ const initialCards = [
 /*                               //buttons nodes                              */
 /* -------------------------------------------------------------------------- */
 
-//like button
-const likeButton = document.querySelector(".elements__card-button");
+
 //add button
 const addCard = document.querySelector(".profile__add-button");
-//trash can
-const cardDelete = document.querySelector(".elements__trash-button");
 //edit button
 const profileEditButton = document.querySelector(".profile__edit-button");
 //popup close button
 const profileEditClose = document.querySelector(".popup__close-button");
+//add close button
+const addCloseButton = document.querySelector("#add_close-button");
 //save button
 const profileSave = document.querySelector(".popup__submit");
-//like button active
-//const likebuttonActive = document.querySelector(".elements__card-button:active");
 
 
 /* -------------------------------------------------------------------------- */
-/*                                 //wrappers                                 */
+/*                                 //edit form                                */
 /* -------------------------------------------------------------------------- */
 
+//profile title
 const profileTitle = document.querySelector(".profile__info-name");
+//profile profession
 const profileProfession = document.querySelector(".profile__info-profession");
+// profile edit form
 const popupEditForm = document.querySelector(".popup__form");
 //edit popup
 const profileEditPopup = document.querySelector("#edit-popup");
 //add popup
 const addCardPopup = document.querySelector("#add-popup");
+
+/* -------------------------------------------------------------------------- */
+/*                                 //card form                                */
+/* -------------------------------------------------------------------------- */
+
+// add button form
+const addButtonForm = document.querySelector("#add-form");
+
+
+
 
 
 
@@ -75,7 +85,8 @@ const nameInputValue = popupEditForm.querySelector(".popup__input-name");
 const professionInputValue = popupEditForm.querySelector(".popup__input-profession");
 
 //card add form data
-
+const titleInputValue = addButtonForm.querySelector("#add-title");
+const linkInputValue = addButtonForm.querySelector("#add-link");
 
 /* -------------------------------------------------------------------------- */
 /*                              // card template                              */
@@ -93,12 +104,12 @@ const cardListEl = document.querySelector(".elements__card-grid");
 profileEditButton.addEventListener("click", function() {
     nameInputValue.value = profileTitle.textContent;
     professionInputValue.value = profileProfession.textContent;
-    profileEditPopup.classList.add("popup__is_open");
+    profileEditPopup.classList.add("popup_is-open");
 });
 
 //edit popup close event
 profileEditClose.addEventListener("click", function(){
-    profileEditPopup.classList.remove("popup__is_open");
+    profileEditPopup.classList.remove("popup_is-open");
 });
 
 //profile save event
@@ -108,7 +119,7 @@ popupEditForm.addEventListener("submit", (event) =>{
     const professionInputValue = event.target.profession.value;
     profileTitle.textContent = nameInputValue;
     profileProfession.textContent = professionInputValue;
-    profileEditPopup.classList.remove("popup__is_open");
+    profileEditPopup.classList.remove("popup_is-open");
 
 });
 
@@ -121,6 +132,21 @@ popupEditForm.addEventListener("submit", (event) =>{
 function createCard (cardData){
   // clone template
   const cardElement = cardTemplate.cloneNode(true);
+
+  //like button
+  const likeButton = cardElement.querySelector("#like-button");
+
+  //cards like event
+  likeButton.addEventListener("click", function(){
+    likeButton.classList.toggle("elements__card-button_active")
+  })
+  //trash button
+  const cardDelete = cardElement.querySelector(".elements__trash-button");
+  
+  //cards delete event
+  cardDelete.addEventListener("click", function(){
+    cardElement.remove();
+ });
 
   // find card image
   const imageEl = cardElement.querySelector(".elements__card-image");
@@ -154,11 +180,15 @@ initialCards.forEach(renderCard);
 addCard.addEventListener("click", function(){
     nameInputValue.value = profileTitle.textContent;
     professionInputValue.value = profileProfession.textContent;
-    profileEditPopup.classList.add("popup__is_open");
+    addCardPopup.classList.add("popup_is-open");
 });
 
-//cards like event
+addCloseButton.addEventListener("click", function(){
+    addCardPopup.classList.remove("popup_is-open");
+});
 
 
 
-//cards delete event
+
+
+
