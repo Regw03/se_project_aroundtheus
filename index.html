@@ -80,7 +80,7 @@
           <form class="popup__form" id="add-form" name="addform">
             <input
               class="popup__input-name"
-              id="add-title"
+              id="add_title"
               name="title"
               placeholder="Title"
               type="text"
@@ -88,14 +88,22 @@
             />
             <input
               class="popup__input-profession"
-              id="add-link"
+              id="add_link"
               name="link"
               placeholder="Image link"
               type="text"
               required
             />
-            <button class="popup__submit" type="submit">Save</button>
+            <button class="popup__submit" id="add_submit" type="submit">Save</button>
           </form>
+        </div>
+      </div>
+
+      <div class="popup" id="image_preview">
+        <div class="popup__content-image" id="image_preview-content">
+          <button class="popup__close-button" id="image_preview-close" type="button"></button>
+          <img class="popup__image" alt="" src="">
+          <h3 class="popup__image-title"></h3>
         </div>
       </div>
 

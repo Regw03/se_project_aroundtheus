@@ -46,6 +46,7 @@ const profileEditClose = document.querySelector(".popup__close-button");
 const addCloseButton = document.querySelector("#add_close-button");
 //save button
 const profileSave = document.querySelector(".popup__submit");
+//image preview
 
 
 /* -------------------------------------------------------------------------- */
@@ -72,11 +73,6 @@ const addButtonForm = document.querySelector("#add-form");
 
 
 
-
-
-
-
-
 /* -------------------------------------------------------------------------- */
 /*                                // form data                                */
 /* -------------------------------------------------------------------------- */
@@ -85,8 +81,8 @@ const nameInputValue = popupEditForm.querySelector(".popup__input-name");
 const professionInputValue = popupEditForm.querySelector(".popup__input-profession");
 
 //card add form data
-const titleInputValue = addButtonForm.querySelector("#add-title");
-const linkInputValue = addButtonForm.querySelector("#add-link");
+const titleInputValue = addButtonForm.querySelector("#add_title");
+const linkInputValue = addButtonForm.querySelector("#add_link");
 
 /* -------------------------------------------------------------------------- */
 /*                              // card template                              */
@@ -147,12 +143,17 @@ function createCard (cardData){
   cardDelete.addEventListener("click", function(){
     cardElement.remove();
  });
+ 
+  // card image preview
+  const imagePreview = document.querySelector("#image_preview");
 
   // find card image
   const imageEl = cardElement.querySelector(".elements__card-image");
-
+        imageEl.addEventListener("click", function(){
+        imagePreview.classList.add("popup_is-open");
+      })
   // find card title
-   const titleEl = cardElement.querySelector(".elements__card-title");
+  const titleEl = cardElement.querySelector(".elements__card-title");
 
   // replace img src
   imageEl.src = cardData.link;
@@ -170,6 +171,19 @@ function createCard (cardData){
 function renderCard (cardData){
   const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
+
+//create new card
+addButtonForm.addEventListener("submit", function(event){
+  event.preventDefault();
+  const titleInputValue = event.target.name.value; 
+  const linkInputValue = event.target.link.value;
+  titleEl.textContent = titleInputValue;
+  imageEl.textContent = linkInputValue;
+  addCardPopup.classList.remove("popup_is-open");
+})
+
+
+
 };
 
 initialCards.forEach(renderCard);
