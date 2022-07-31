@@ -119,6 +119,22 @@
     max-height: 75vh;
 }
 
+.popup__image-title{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    font-style: normal;
+    color:#FFFFFF
+}
+
+#image_preview-content{
+    background-color: transparent;
+}
+
+#image_preview{
+    display: flex;
+}
+
 
 @media screen and (max-width: 600px){
     .popup__content{
