@@ -113,6 +113,12 @@
     cursor: pointer;
 }
 
+/* imagepreview */
+.popup__image{
+    max-width: 75vw;
+    max-height: 75vh;
+}
+
 
 @media screen and (max-width: 600px){
     .popup__content{

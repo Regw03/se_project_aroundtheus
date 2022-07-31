@@ -45,6 +45,9 @@ const addCloseButton = document.querySelector('#add_close-button');
 const profileSave = document.querySelector('.popup__submit');
 //add save button
 const addSaveButton = document.querySelector('#add_submit');
+// image preview close
+const previewCloseButton = document.querySelector("#image_preview-close");
+
 
 /* -------------------------------------------------------------------------- */
 /*                                 //edit form                                */
@@ -58,13 +61,13 @@ const profileProfession = document.querySelector('.profile__info-profession');
 const popupEditForm = document.querySelector('.popup__form');
 //edit popup
 const profileEditPopup = document.querySelector('#edit-popup');
-//add popup
-const addCardPopup = document.querySelector('#add-popup');
+
 
 /* -------------------------------------------------------------------------- */
 /*                                 //card form                                */
 /* -------------------------------------------------------------------------- */
-
+//add popup
+const addCardPopup = document.querySelector('#add-popup');
 // add button form
 const addButtonForm = document.querySelector('#add-form');
 
@@ -139,11 +142,21 @@ function createCard(cardData) {
   // card image preview
   const imagePreview = document.querySelector('#image_preview');
 
-  // find card image popup
+  // card image
   const imageEl = cardElement.querySelector('.elements__card-image');
+
+  //image preview popup
   imageEl.addEventListener('click', function () {
+    imageEl.src = cardData.link;
+    imageEl.alt = cardData.name;
+    titleEl.textContent = cardData.name;
     imagePreview.classList.add('popup_is-open');
   });
+  //image preview close button
+  previewCloseButton.addEventListener("click", function() {
+    imagePreview.classList.remove('popup_is-open');
+  });
+
   // find card title
   const titleEl = cardElement.querySelector('.elements__card-title');
 
@@ -158,8 +171,6 @@ function createCard(cardData) {
 
   // append to list
   return cardElement;
-
-
 };
 
 function renderCard(cardData) {
