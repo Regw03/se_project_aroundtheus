@@ -185,10 +185,9 @@ addCloseButton.addEventListener('click', function () {
 //create new card
   addButtonForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    const titleInputValue = event.target.name.value;
     const linkInputValue = event.target.link.value;
     renderCard({
-      name: titleInputValue,
+      name: titleInputValue.value,
       link: linkInputValue,
     });
     addCardPopup.classList.remove('popup_is-open');
