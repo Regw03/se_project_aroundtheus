@@ -147,9 +147,10 @@ function createCard(cardData) {
 
   //image preview popup
   imageEl.addEventListener('click', function () {
-    imageEl.src = cardData.link;
-    imageEl.alt = cardData.name;
-    titleEl.textContent = cardData.name;
+    const popupImage = imagePreview.querySelector(".popup__image")
+    const popupImageTitle = imagePreview.querySelector(".popup__image-title")
+    popupImageTitle.textContent = cardData.name;
+    popupImage.src = cardData.link;
     imagePreview.classList.add('popup_is-open');
   });
   //image preview close button

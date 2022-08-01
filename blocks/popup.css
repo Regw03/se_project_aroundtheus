@@ -12,7 +12,7 @@
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-    transition: visivility 0s 0.5s, opacity   0.5s linear;
+    transition: visibility 0s 0.5s, opacity   0.5s linear;
 }
 
 .popup_is-open{
@@ -20,6 +20,7 @@
     opacity: 1;
     pointer-events: all;
     transition: visibility 0s, opacity 0.5s linear;
+    transition-delay: 0s;
 }
 
 .popup__close-button{
@@ -117,6 +118,7 @@
 .popup__image{
     max-width: 75vw;
     max-height: 75vh;
+    width: 100%;
 }
 
 .popup__image-title{
@@ -127,13 +129,17 @@
     color:#FFFFFF
 }
 
-#image_preview-content{
+.popup__content-image-preview{
     background-color: transparent;
+    width: 75vw;
+    height: 75vh;
+    position: relative;
 }
 
-#image_preview{
-    display: flex;
+.popup__close_preview{
+    position: absolute;
 }
+
 
 
 @media screen and (max-width: 600px){
@@ -156,5 +162,9 @@
         width: 26px;
         height: 26px;
         right: 0;
+    }
+
+    .popup__content-image-preview{
+        padding: 0;
     }
 }
