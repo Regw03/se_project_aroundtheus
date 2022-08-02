@@ -41,6 +41,10 @@
 
 }
 
+.elements__card-image:hover{
+    cursor: pointer;
+}
+
 .elements__card-content{
     margin: 25px 15px 21px;
     color: black;

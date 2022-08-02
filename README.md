@@ -22,4 +22,4 @@ This project is made so all the elements are displayed correctly on popular scre
 The is project number 4 in the Practicum SE program.
 This project contains the first use of JS with in the program it was rather frustrating to learn but fun at the same time. 
  
- Here is the link to the live paga https://regw03.github.io/se_project_aroundtheus/ 
+ Here is the link to the live page https://regw03.github.io/se_project_aroundtheus/ 

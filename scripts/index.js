@@ -34,7 +34,7 @@ const initialCards = [
 /* -------------------------------------------------------------------------- */
 
 //add button
-const addCard = document.querySelector('.profile__add-button');
+const addCardButton = document.querySelector('.profile__add-button');
 //edit button
 const profileEditButton = document.querySelector('.profile__edit-button');
 //popup close button
@@ -69,7 +69,7 @@ const profileEditPopup = document.querySelector('#edit-popup');
 //add popup
 const addCardPopup = document.querySelector('#add-popup');
 // add button form
-const addButtonForm = document.querySelector('#add-form');
+const addCardForm = document.querySelector('#add-form');
 
 /* -------------------------------------------------------------------------- */
 /*                                // form data                                */
@@ -79,9 +79,9 @@ const nameInputValue = popupEditForm.querySelector('.popup__input-name');
 const professionInputValue = popupEditForm.querySelector('.popup__input-profession',);
 
 //card add form data
-const titleInputValue = addButtonForm.querySelector('#add_title');
+const titleInputValue = addCardForm.querySelector('#add_title');
 
-const linkInputValue = addButtonForm.querySelector('#add_link');
+const linkInputValue = addCardForm.querySelector('#add_link');
 
 /* -------------------------------------------------------------------------- */
 /*                              // card template                              */
@@ -183,7 +183,7 @@ initialCards.forEach(renderCard);
 
 //cards add form
 
-addCard.addEventListener('click', function () {
+addCardButton.addEventListener('click', function () {
   nameInputValue.value = profileTitle.textContent;
   professionInputValue.value = profileProfession.textContent;
   addCardPopup.classList.add('popup_is-open');
@@ -195,7 +195,7 @@ addCloseButton.addEventListener('click', function () {
 
 
 //create new card
-  addButtonForm.addEventListener('submit', function (event) {
+  addCardForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const linkInputValue = event.target.link.value;
     renderCard({
