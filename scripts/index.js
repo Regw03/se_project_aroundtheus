@@ -29,6 +29,8 @@ const initialCards = [
   },
 ];
 
+ 
+
 /* -------------------------------------------------------------------------- */
 /*                               //buttons nodes                              */
 /* -------------------------------------------------------------------------- */
@@ -94,16 +96,24 @@ const cardListEl = document.querySelector('.elements__card-grid');
 /*                            //  profile edit form                           */
 /* -------------------------------------------------------------------------- */
 
+function openPopup(popup) {
+  popup.classList.add("popup_is-open");
+};
+
+function closePopup(popup) {
+  popup.classList.remove("popup_is-open");
+}
+
 //edit popup is open event
 profileEditButton.addEventListener('click', function () {
   nameInputValue.value = profileTitle.textContent;
   professionInputValue.value = profileProfession.textContent;
-  profileEditPopup.classList.add('popup_is-open');
+  openPopup(profileEditPopup);
 });
 
 //edit popup close event
 profileEditClose.addEventListener('click', function () {
-  profileEditPopup.classList.remove('popup_is-open');
+  closePopup(profileEditPopup);
 });
 
 //profile save event
@@ -117,7 +127,7 @@ popupEditForm.addEventListener('submit', (event) => {
 });
 
 /* -------------------------------------------------------------------------- */
-/*                              // cards ellement                             */
+/*                      // cards ellement / functions                         */
 /* -------------------------------------------------------------------------- */
 
 function createCard(cardData) {
@@ -151,11 +161,11 @@ function createCard(cardData) {
     const popupImageTitle = imagePreview.querySelector(".popup__image-title")
     popupImageTitle.textContent = cardData.name;
     popupImage.src = cardData.link;
-    imagePreview.classList.add('popup_is-open');
+    openPopup(imagePreview);
   });
   //image preview close button
   previewCloseButton.addEventListener("click", function() {
-    imagePreview.classList.remove('popup_is-open');
+    closePopup(imagePreview);
   });
 
   // find card title
@@ -183,14 +193,14 @@ initialCards.forEach(renderCard);
 
 //cards add form
 
+
+
 addCardButton.addEventListener('click', function () {
-  nameInputValue.value = profileTitle.textContent;
-  professionInputValue.value = profileProfession.textContent;
-  addCardPopup.classList.add('popup_is-open');
+  openPopup(addCardPopup);
 });
 
 addCloseButton.addEventListener('click', function () {
-  addCardPopup.classList.remove('popup_is-open');
+  closePopup(addCardPopup);
 });
 
 
@@ -203,5 +213,6 @@ addCloseButton.addEventListener('click', function () {
       link: linkInputValue,
     });
     addCardPopup.classList.remove('popup_is-open');
+    addCardForm.reset();
   });
   
