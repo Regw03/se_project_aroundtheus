@@ -77,8 +77,8 @@ const addCardForm = document.querySelector('#add-form');
 /*                                // form data                                */
 /* -------------------------------------------------------------------------- */
 //edit form data
-const nameInputValue = popupEditForm.querySelector('.popup__input-name');
-const professionInputValue = popupEditForm.querySelector('.popup__input-profession',);
+const nameInputValue = popupEditForm.querySelector('.popup__input');
+const professionInputValue = popupEditForm.querySelector('.popup__input',);
 
 //card add form data
 const titleInputValue = addCardForm.querySelector('#add_title');

@@ -55,19 +55,31 @@
           <button class="popup__close-button" type="button"></button>
           <form class="popup__form" id="edit-profile-form" name="editform">
             <input
-              class="popup__input-name"
+              class="popup__input"
+              id="name-input"
               name="name"
               placeholder="Name"
               type="text"
               required
+              maxlength="40"
+              minlength="2"
             />
+
+            <span id="name-input-error"></span>
+
             <input
-              class="popup__input-profession"
+              class="popup__input"
+              id="profession-input"
               name="profession"
               placeholder="Profession"
               type="text"
               required
+              maxlength="200"
+              minlength="2"
             />
+
+            <span id="profession-input-error"></span>
+
             <button class="popup__submit" type="submit">Save</button>
           </form>
         </div>
@@ -79,15 +91,17 @@
           <button class="popup__close-button" id="add_close-button" type="button"></button>
           <form class="popup__form" id="add-form" name="addform">
             <input
-              class="popup__input-name"
+              class="popup__input"
               id="add_title"
               name="title"
               placeholder="Title"
               type="text"
               required
+              maxlength="30"
+              minlength="1"
             />
             <input
-              class="popup__input-profession"
+              class="popup__input"
               id="add_link"
               name="link"
               placeholder="Image link"
@@ -121,6 +135,7 @@
     </template>
 
     <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validate.js"></script>
 
   </body>
 </html>
