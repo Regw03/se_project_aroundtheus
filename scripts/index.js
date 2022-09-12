@@ -81,9 +81,9 @@ const nameInputValue = popupEditForm.querySelector('.popup__input');
 const professionInputValue = popupEditForm.querySelector('.popup__input',);
 
 //card add form data
-const titleInputValue = addCardForm.querySelector('#add_title');
+const titleInputValue = addCardForm.querySelector('#add_title-input');
 
-const linkInputValue = addCardForm.querySelector('#add_link');
+const linkInputValue = addCardForm.querySelector('#add_link-input');
 
 /* -------------------------------------------------------------------------- */
 /*                              // card template                              */

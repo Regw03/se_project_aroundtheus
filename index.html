@@ -92,22 +92,28 @@
           <form class="popup__form" id="add-form" name="addform">
             <input
               class="popup__input"
-              id="add_title"
+              id="add_title-input"
               name="title"
               placeholder="Title"
               type="text"
               required
               maxlength="30"
-              minlength="1"
+              minlength="2"
             />
+
+            <span id="add_title-input-error"></span>
+
             <input
               class="popup__input"
-              id="add_link"
+              id="add_link-input"
               name="link"
               placeholder="Image link"
               type="text"
               required
             />
+
+            <span id="add_link-input-error"></span>
+
             <button class="popup__submit" id="add_submit" type="submit">Save</button>
           </form>
         </div>

@@ -1,7 +1,6 @@
 const showInputError = (input, formEl, {errorClass}) => {
     const errorSpan = formEl.querySelector('#' + input.id + '-error');
     //add Error message
-    console.log(input.error,validationMessage);
     errorSpan.textContent = input.validationMessage;
     errorSpan.classList.add(errorClass);
 }
@@ -16,10 +15,9 @@ const hideInputError = (input, formEl, {errorClass}) => {
 
 const checkInputValidity = (formEl, input, settings) => {
     if(input.validity.valid) {
-        console.log("valid");
-        hideInputError();
+        hideInputError(input, formEl, settings);
     } else {
-        showInputError(input, formEl);
+        showInputError(input, formEl, settings);
     }
 };
 
