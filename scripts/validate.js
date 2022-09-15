@@ -21,6 +21,10 @@ const checkInputValidity = (formEl, input, settings) => {
     }
 };
 
+// const toggleButton = (formEl, button, settings) {
+    
+// };
+
 const setEventListeners = (formEl, settings) => {
     const inputs = [...formEl.querySelectorAll(settings.inputSelector)];
     inputs.forEach((input) => {
@@ -29,6 +33,7 @@ const setEventListeners = (formEl, settings) => {
             checkInputValidity(formEl, input, settings);
             console.log(checkInputValidity);
             //toggle the button
+            toggleButton(formEl, button, settings);
         });
     });
 };

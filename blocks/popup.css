@@ -140,6 +140,11 @@
     position: absolute;
 }
 
+.input__error{
+    color: red;
+    border-top: 1px solid red;
+}
+
 
 
 @media screen and (max-width: 600px){
