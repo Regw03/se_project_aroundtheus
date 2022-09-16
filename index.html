@@ -54,6 +54,8 @@
           <h3 class="popup__title">Edit profile</h3>
           <button class="popup__close-button" type="button"></button>
           <form class="popup__form" id="edit-profile-form" name="editform">
+            <div>
+            <div class="popup__input-container">
             <input
               class="popup__input"
               id="name-input"
@@ -66,7 +68,8 @@
             />
 
             <span class="input__error" id="name-input-error"></span>
-
+          </div>
+          <div class="popup__input-container">
             <input
               class="popup__input"
               id="profession-input"
@@ -79,7 +82,8 @@
             />
 
             <span class="input__error" id="profession-input-error"></span>
-
+            </div>
+            </div>
             <button class="popup__submit" type="submit">Save</button>
           </form>
         </div>
@@ -90,6 +94,8 @@
           <h3 class="popup__title">New Place</h3>
           <button class="popup__close-button" id="add_close-button" type="button"></button>
           <form class="popup__form" id="add-form" name="addform">
+            <div>
+            <div class="popup__input-container">
             <input
               class="popup__input"
               id="add_title-input"
@@ -102,18 +108,20 @@
             />
 
             <span class="input__error" id="add_title-input-error"></span>
-
+            </div>
+            <div class="popup__input-container">
             <input
               class="popup__input"
               id="add_link-input"
               name="link"
               placeholder="Image link"
-              type="text"
+              type="url"
               required
             />
 
             <span class="input__error" id="add_link-input-error"></span>
-
+            </div>
+            </div>
             <button class="popup__submit" id="add_submit" type="submit">Save</button>
           </form>
         </div>

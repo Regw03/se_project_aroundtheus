@@ -1,8 +1,9 @@
-const showInputError = (input, formEl, {errorClass}) => {
+const showInputError = (input, formEl, {errorClass, inputErrorClass}) => {
     const errorSpan = formEl.querySelector('#' + input.id + '-error');
     //add Error message
     errorSpan.textContent = input.validationMessage;
     errorSpan.classList.add(errorClass);
+    input.classList.add(inputErrorClass);
 }
 
 const hideInputError = (input, formEl, {errorClass}) => {
@@ -21,9 +22,9 @@ const checkInputValidity = (formEl, input, settings) => {
     }
 };
 
-// const toggleButton = (formEl, button, settings) {
+//  const toggleButton = (formEl, button, settings) {
     
-// };
+//  };
 
 const setEventListeners = (formEl, settings) => {
     const inputs = [...formEl.querySelectorAll(settings.inputSelector)];
@@ -33,7 +34,7 @@ const setEventListeners = (formEl, settings) => {
             checkInputValidity(formEl, input, settings);
             console.log(checkInputValidity);
             //toggle the button
-            toggleButton(formEl, button, settings);
+            // toggleButton(formEl, button, settings);
         });
     });
 };
