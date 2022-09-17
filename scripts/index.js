@@ -168,6 +168,16 @@ function createCard(cardData) {
   previewCloseButton.addEventListener("click", function() {
     closePopup(imagePreview);
   });
+//image preview close w/esc button
+  document.addEventListener('keydown', function(e) {
+    const key = e.key;
+    if (key === "Escape") {
+      closePopup(imagePreview);
+    };
+  });
+//image preview close w/click background
+
+  
 
   // find card title
   const titleEl = cardElement.querySelector('.elements__card-title');
