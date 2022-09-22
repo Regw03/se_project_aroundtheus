@@ -29,7 +29,11 @@ const initialCards = [
   },
 ];
 
- 
+ /* -------------------------------------------------------------------------- */
+ /*                                    popup                                   */
+ /* -------------------------------------------------------------------------- */
+
+const popup = document.querySelector(".popup");
 
 /* -------------------------------------------------------------------------- */
 /*                               //buttons nodes                              */
@@ -116,6 +120,7 @@ profileEditClose.addEventListener('click', function () {
   closePopup(profileEditPopup);
 });
 
+
 //profile save event
 popupEditForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -168,16 +173,10 @@ function createCard(cardData) {
   previewCloseButton.addEventListener("click", function() {
     closePopup(imagePreview);
   });
-//image preview close w/esc button
-  document.addEventListener('keydown', function(e) {
-    const key = e.key;
-    if (key === "Escape") {
-      closePopup(imagePreview);
-    };
-  });
-//image preview close w/click background
 
-  
+
+
+
 
   // find card title
   const titleEl = cardElement.querySelector('.elements__card-title');
@@ -227,3 +226,14 @@ addCloseButton.addEventListener('click', function () {
     addCardForm.reset();
   });
   
+/* -------------------------------------------------------------------------- */
+/*                         close popup with escape key                        */
+/* -------------------------------------------------------------------------- */
+
+  //esc button event
+  document.addEventListener('keydown', function(e) {
+    const key = e.key;
+    if (key === "Escape") {
+      closePopup(popup);
+    };
+  });
