@@ -35,6 +35,7 @@ const initialCards = [
 
 const popup = document.querySelector(".popup");
 
+
 /* -------------------------------------------------------------------------- */
 /*                               //buttons nodes                              */
 /* -------------------------------------------------------------------------- */
@@ -231,9 +232,17 @@ addCloseButton.addEventListener('click', function () {
 /* -------------------------------------------------------------------------- */
 
   //esc button event
-  document.addEventListener('keydown', function(e) {
+
+  
+  function escapeFun(e) {
     const key = e.key;
     if (key === "Escape") {
-      closePopup(popup);
+      closePopup(e.target.closest(".popup"));
+      console.log(e.target, "hello");
+      console.log(closePopup(e.target.closest(".popup")), "goodby");
     };
-  });
+  };
+
+
+  
+  document.addEventListener('keydown', escapeFun);
