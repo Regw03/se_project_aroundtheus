@@ -107,10 +107,22 @@
     margin-bottom: 36.51px;
 }
 
+
 .popup__submit:hover{
     opacity: 80%;
     cursor: pointer;
 }
+
+/* submit button validation */
+/* .popup__submit-inactive{
+    background-color: #FFFFFF;
+    color: #0000;
+    opacity: 0.2;
+}
+
+.popup__submit-inactive:invalid{
+    cursor:not-allowed
+} */
 
 /* imagepreview */
 .popup__image{

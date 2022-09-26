@@ -33,8 +33,7 @@ const initialCards = [
  /*                                    popup                                   */
  /* -------------------------------------------------------------------------- */
 
-const popup = document.querySelector(".popup");
-
+const popup = document.querySelector('.popup');
 
 /* -------------------------------------------------------------------------- */
 /*                               //buttons nodes                              */
@@ -82,8 +81,8 @@ const addCardForm = document.querySelector('#add-form');
 /*                                // form data                                */
 /* -------------------------------------------------------------------------- */
 //edit form data
-const nameInputValue = popupEditForm.querySelector('.popup__input');
-const professionInputValue = popupEditForm.querySelector('.popup__input',);
+const nameInputValue = popupEditForm.querySelector('#name-input');
+const professionInputValue = popupEditForm.querySelector('#profession-input',);
 
 //card add form data
 const titleInputValue = addCardForm.querySelector('#add_title-input');
@@ -120,7 +119,6 @@ profileEditButton.addEventListener('click', function () {
 profileEditClose.addEventListener('click', function () {
   closePopup(profileEditPopup);
 });
-
 
 //profile save event
 popupEditForm.addEventListener('submit', (event) => {
@@ -176,9 +174,6 @@ function createCard(cardData) {
   });
 
 
-
-
-
   // find card title
   const titleEl = cardElement.querySelector('.elements__card-title');
 
@@ -204,8 +199,6 @@ initialCards.forEach(renderCard);
 
 //cards add form
 
-
-
 addCardButton.addEventListener('click', function () {
   openPopup(addCardPopup);
 });
@@ -227,19 +220,19 @@ addCloseButton.addEventListener('click', function () {
     addCardForm.reset();
   });
   
-/* -------------------------------------------------------------------------- */
-/*                         close popup with escape key                        */
-/* -------------------------------------------------------------------------- */
 
-  //esc button event
 
+
+
+  /* -------------------------------------------------------------------------- */
+  /*                              esc button event                              */
+  /* -------------------------------------------------------------------------- */
   
   function escapeFun(e) {
     const key = e.key;
     if (key === "Escape") {
-      closePopup(e.target.closest(".popup"));
-      console.log(e.target, "hello");
-      console.log(closePopup(e.target.closest(".popup")), "goodby");
+      const openedPopup = document.querySelector(".popup_is-open");
+      closePopup(openedPopup);
     };
   };
 
