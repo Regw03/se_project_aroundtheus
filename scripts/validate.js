@@ -22,19 +22,35 @@ const checkInputValidity = (formEl, input, settings) => {
     }
 };
 
-//  const toggleButton = (formEl, button, settings) {
-     
+//  const hasValidInputs = (inputList) => {
+//     let isValid = true;
+//     inputList.forEach(input => {
+//         if(!input.validity.valid) {
+//             isValid = false;
+//         }
+//     });
+//     return isValid;
+//  }
+
+//  const toggleButton = (inputList, input, settings) {
+//     console.log('hasValid', hasValidInputs(inputList));
+//     // if( hasValidInputs(inputList)) {
+//     //     //make button enabled
+//     // } else {
+//     //     //make button disabled
+//     // };
 //  };
 
 const setEventListeners = (formEl, settings) => {
-    const inputs = [...formEl.querySelectorAll(settings.inputSelector)];
-    inputs.forEach((input) => {
+    const inputList = [...formEl.querySelectorAll(settings.inputSelector)];
+    const submitButton = formEl.querySelector(settings.submitButtonSelector);
+    inputList.forEach((input) => {
         input.addEventListener("input", (e) => {
             //check validation
             checkInputValidity(formEl, input, settings);
             console.log(checkInputValidity);
             //toggle the button
-            toggleButton(formEl, button, settings);
+            // toggleButton(inputList, submitButton, settings);
             
         });
     });
@@ -46,7 +62,6 @@ const enableValidation = (settings) => {
     formElements.forEach((formEl) => {
     formEl.addEventListener("submit", (e) => e.preventDefault())
         setEventListeners(formEl, settings);
-       
     });
 
 };
