@@ -114,13 +114,13 @@
 }
 
 /* submit button validation */
-/* .popup__submit-inactive{
+/* .popup__submit_disabled{
     background-color: #FFFFFF;
     color: #0000;
     opacity: 0.2;
 }
 
-.popup__submit-inactive:invalid{
+.popup__submit_disabled:invalid{
     cursor:not-allowed
 } */
 
