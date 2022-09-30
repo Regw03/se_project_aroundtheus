@@ -23,22 +23,19 @@ const checkInputValidity = (formEl, input, settings) => {
 };
 
  const hasValidInputs = (inputList) => {
-    let isValid = true;
-    inputList.forEach(input => {
-        if(!input.validity.valid) {
-            isValid = false;
-        }
-    });
-    return isValid;
- }
 
- const toggleButton = (inputList, input, settings) => {
+    return inputList.every(input => input.validity.valid === true);
+    
+ };
+
+ const toggleButton = (inputList, button, settings) => {
     console.log('hasValid', hasValidInputs(inputList));
-    // if( hasValidInputs(inputList)) {
-    //     //make button enabled
-    // } else {
-    //     //make button disabled
-    // };
+    if( hasValidInputs(inputList)) {
+        button.disabled = false;
+    } else {
+        button.disabled = true;
+        button.classList.add(settings.inactiveButtonClass);
+    };
  };
 
 const setEventListeners = (formEl, settings) => {

@@ -18,7 +18,7 @@ This project is made so all the elements are displayed correctly on popular scre
   
 * [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
 
-**Descriptio**
+**Description**
 The is project number 4 in the Practicum SE program.
 This project contains the first use of JS with in the program it was rather frustrating to learn but fun at the same time. 
  
