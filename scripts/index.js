@@ -49,7 +49,7 @@ const addSaveButton = document.querySelector('#add_submit');
 // image preview close
 const previewCloseButton = document.querySelector("#image_preview-close");
 //popup overlay click to close
-const popup = document.querySelector('.popup');
+const popup = document.querySelector('.popup_is-open');
 console.log(popup)
 
 /* -------------------------------------------------------------------------- */
@@ -239,7 +239,10 @@ addCloseButton.addEventListener('click', function () {
   /*                          Click on OverLay event                            */
   /* -------------------------------------------------------------------------- */
 
-   document.addEventListener('click', (event) => {
-    closePopup("#edit-popup");
+   document.addEventListener('click', () => {
+    if (!popup.classList.contains(".popup_is-open")) {
+      closePopup(popup);
+    }
+    
 
     });
