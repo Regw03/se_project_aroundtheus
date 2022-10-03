@@ -148,7 +148,7 @@
     position: absolute;
 }
 
-.input__error{
+.popup__input_error{
     color: red;
 }
 
