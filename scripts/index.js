@@ -48,7 +48,9 @@ const profileSave = document.querySelector('.popup__submit');
 const addSaveButton = document.querySelector('#add_submit');
 // image preview close
 const previewCloseButton = document.querySelector("#image_preview-close");
-
+//popup overlay click to close
+const popup = document.querySelector('.popup');
+console.log(popup)
 
 /* -------------------------------------------------------------------------- */
 /*                                 //edit form                                */
@@ -237,3 +239,7 @@ addCloseButton.addEventListener('click', function () {
   /*                          Click on OverLay event                            */
   /* -------------------------------------------------------------------------- */
 
+   document.addEventListener('click', (event) => {
+    closePopup("#edit-popup");
+
+    });

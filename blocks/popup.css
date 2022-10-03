@@ -93,6 +93,9 @@
 .popup__input-container:last-child{
     margin-bottom: 0;
 }
+/* submit button validation */
+
+
 
 .popup__submit{
     background-color: black;
@@ -107,19 +110,16 @@
     margin-bottom: 36.51px;
 }
 
+.popup__button_disabled{
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
 
 .popup__submit:hover{
     opacity: 80%;
     cursor: pointer;
 }
-
-/* submit button validation */
-.popup__button_disabled{
-    background-color: #FFFFFF;
-    color: #0000;
-    opacity: 0.2;
-}
-
 
 
 /* imagepreview */

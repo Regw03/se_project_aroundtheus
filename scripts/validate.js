@@ -32,9 +32,10 @@ const checkInputValidity = (formEl, input, settings) => {
     console.log('hasValid', hasValidInputs(inputList));
     if( hasValidInputs(inputList)) {
         button.disabled = false;
+        button.classList.remove("popup__button_disabled");
     } else {
         button.disabled = true;
-        button.classList.add(settings.inactiveButtonClass);
+        button.classList.add("popup__button_disabled");
     };
  };
 
@@ -67,7 +68,7 @@ enableValidation({
     formSelector: ".popup__form",
     inputSelector: ".popup__input",
     submitButtonSelector: ".popup__submit",
-    inactiveButtonClass: "pupup__button_disabled",
+    inactiveButtonClass: "popup__button_disabled",
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_visible",
 });
