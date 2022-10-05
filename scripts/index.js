@@ -42,15 +42,12 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const profileEditClose = document.querySelector('.popup__close-button');
 //add close button
 const addCloseButton = document.querySelector('#add_close-button');
-//save button
-const profileSave = document.querySelector('.popup__submit');
 //add save button
 const addSaveButton = document.querySelector('#add_submit');
 // image preview close
 const previewCloseButton = document.querySelector("#image_preview-close");
-//popup overlay click to close
-const popup = document.querySelector('.popup');
-console.log(popup)
+
+
 
 /* -------------------------------------------------------------------------- */
 /*                                 //edit form                                */
@@ -93,6 +90,14 @@ const linkInputValue = addCardForm.querySelector('#add_link-input');
 const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
 const cardListEl = document.querySelector('.elements__card-grid');
 
+/* -------------------------------------------------------------------------- */
+/*                                image preview                                */
+/* -------------------------------------------------------------------------- */
+  // card image preview
+  const imagePreview = document.querySelector('#image_preview');
+  const popupImage = imagePreview.querySelector(".popup__image")
+  
+  const popupImageTitle = imagePreview.querySelector(".popup__image-title")
 /* -------------------------------------------------------------------------- */
 /*                            //  profile edit form                           */
 /* -------------------------------------------------------------------------- */
@@ -150,16 +155,14 @@ function createCard(cardData) {
     cardElement.remove();
   });
 
-  // card image preview
-  const imagePreview = document.querySelector('#image_preview');
+  
 
   // card image
   const imageEl = cardElement.querySelector('.elements__card-image');
 
   //image preview popup
   imageEl.addEventListener('click', function () {
-    const popupImage = imagePreview.querySelector(".popup__image")
-    const popupImageTitle = imagePreview.querySelector(".popup__image-title")
+    
     popupImageTitle.textContent = cardData.name;
     popupImage.src = cardData.link;
     popupImage.alt = cardData.name;
@@ -215,6 +218,11 @@ addCloseButton.addEventListener('click', function () {
     });
     closePopup(addCardPopup);
     addCardForm.reset();
+    const button = document.querySelector("#add_submit");
+    console.log(button);
+    disableSubmitButton(button);
+    
+    
   });
   
 
@@ -225,7 +233,7 @@ addCloseButton.addEventListener('click', function () {
   /*                              esc button event                              */
   /* -------------------------------------------------------------------------- */
   
-  function escapeFun(e) {
+  function handleEscape(e) {
     const key = e.key;
     if (key === "Escape") {
       const openedPopup = document.querySelector(".popup_is-open");
@@ -233,14 +241,13 @@ addCloseButton.addEventListener('click', function () {
     };
   };
 
-  document.addEventListener('keydown', escapeFun);
+  document.addEventListener('keydown', handleEscape);
 
   /* -------------------------------------------------------------------------- */
   /*                          Click on OverLay event                            */
   /* -------------------------------------------------------------------------- */
 
    document.addEventListener('click', (event) => {
-    console.log(event.target);
     if (event.target.classList.contains("popup_is-open")) {
       const openedPopup = document.querySelector(".popup_is-open");
       closePopup(openedPopup);

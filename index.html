@@ -67,7 +67,7 @@
               minlength="2"
             />
 
-            <span class="popup__input-conainer-error" id="name-input-error"></span>
+            <span class="popup__input-container-error" id="name-input-error"></span>
           </div>
           <div class="popup__input-container">
             <input
@@ -104,7 +104,7 @@
               type="text"
               required
               maxlength="30"
-              minlength="2"
+              minlength="1"
             />
 
             <span class="popup__input-container-error" id="add_title-input-error"></span>
@@ -119,10 +119,10 @@
               required
             />
 
-            <span class="popup__input-contaier-error" id="add_link-input-error"></span>
+            <span class="popup__input-container-error" id="add_link-input-error"></span>
             </div>
             </div>
-            <button class="popup__submit" id="add_submit" type="submit">Save</button>
+            <button class="popup__submit popup__button_disabled" id="add_submit" type="submit" disabled>Save</button>
           </form>
         </div>
       </div>
@@ -148,8 +148,8 @@
       </li>
     </template>
 
-    <script defer src="./scripts/index.js"></script>
     <script defer src="./scripts/validate.js"></script>
+    <script defer src="./scripts/index.js"></script>
 
   </body>
 </html>
