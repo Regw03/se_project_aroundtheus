@@ -22,7 +22,6 @@ const checkInputValidity = (formEl, input, settings) => {
         showInputError(input, formEl, settings);
     }
 };
-
  const hasValidInputs = (inputList) => {
 
     return inputList.every(input => input.validity.valid === true);
@@ -30,8 +29,8 @@ const checkInputValidity = (formEl, input, settings) => {
  };
 
 const enableSubmitButton = (button, settings) => {
-        button.disabled = false;
-        button.classList.remove(settings.inactiveButtonClass);
+    button.disabled = false;
+    button.classList.remove(settings.inactiveButtonClass);
 }
 
 const disableSubmitButton = (button, settings) => {
@@ -41,9 +40,9 @@ const disableSubmitButton = (button, settings) => {
 
  const toggleButton = (inputList, button, settings) => {
     if( hasValidInputs(inputList)) {
-        enableSubmitButton(button);
+        enableSubmitButton(button, settings);
     } else {
-        disableSubmitButton(button);
+        disableSubmitButton(button, settings);
     };
  };
 
@@ -82,6 +81,5 @@ enableValidation({
     errorClass: "popup__error_visible",
     
 });
-console.log(inactiveButtonClass);
 
 
