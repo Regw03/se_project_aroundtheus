@@ -232,7 +232,7 @@ addCloseButton.addEventListener('click', function () {
     closePopup(addCardPopup);
     addCardForm.reset();
     const button = document.querySelector("#add_submit");
-    disableSubmitButton(button);
+    disableSubmitButton(button, {inactiveButtonClass: "popup__button_disabled"});
     
   });
 
