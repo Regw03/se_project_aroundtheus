@@ -29,18 +29,17 @@ const checkInputValidity = (formEl, input, settings) => {
     
  };
 
-const enableSubmitButton = (button, settings) => {
+const enableSubmitButton = (button) => {
         button.disabled = false;
-        button.classList.remove(settings);
+        button.classList.remove("popup__button_disabled");
 }
 
-const disableSubmitButton = (button, settings) => {
+const disableSubmitButton = (button) => {
         button.disabled = true;
-        button.classList.add(settings);
+        button.classList.add("popup__button_disabled");
 }
 
- const toggleButton = (inputList, button, settings) => {
-    console.log('hasValid', hasValidInputs(inputList));
+ const toggleButton = (inputList, button) => {
     if( hasValidInputs(inputList)) {
         enableSubmitButton(button);
     } else {
