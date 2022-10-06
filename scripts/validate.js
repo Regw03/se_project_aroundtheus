@@ -29,17 +29,17 @@ const checkInputValidity = (formEl, input, settings) => {
     
  };
 
-const enableSubmitButton = (button) => {
+const enableSubmitButton = (button, settings) => {
         button.disabled = false;
-        button.classList.remove("popup__button_disabled");
+        button.classList.remove(settings.inactiveButtonClass);
 }
 
-const disableSubmitButton = (button) => {
+const disableSubmitButton = (button, settings) => {
         button.disabled = true;
-        button.classList.add("popup__button_disabled");
+        button.classList.add(settings.inactiveButtonClass);
 }
 
- const toggleButton = (inputList, button) => {
+ const toggleButton = (inputList, button, settings) => {
     if( hasValidInputs(inputList)) {
         enableSubmitButton(button);
     } else {
@@ -80,7 +80,8 @@ enableValidation({
     inactiveButtonClass: "popup__button_disabled",
     inputErrorClass: "popup__input_type_error",
     errorClass: "popup__error_visible",
+    
 });
-
+console.log(inactiveButtonClass);
 
 
