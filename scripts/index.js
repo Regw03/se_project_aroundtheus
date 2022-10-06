@@ -104,11 +104,26 @@ const cardListEl = document.querySelector('.elements__card-grid');
 
 function openPopup(popup) {
   popup.classList.add("popup_is-open");
+  document.addEventListener('keydown', handleEscape);
+  popup.addEventListener('click', handleOverlayClick);
 };
+function handleOverlayClick(event) {
+    if (event.target.classList.contains("popup_is-open")) {
+      
+      closePopup(event.target);
+    }
+    };
 
 function closePopup(popup) {
   popup.classList.remove("popup_is-open");
+  document.removeEventListener('keydown', handleEscape);
+  popup.removeEventListener('click', handleOverlayClick);
 }
+
+ //image preview close button
+  previewCloseButton.addEventListener("click", function() {
+    closePopup(imagePreview);
+  });
 
 //edit popup is open event
 profileEditButton.addEventListener('click', function () {
@@ -168,10 +183,10 @@ function createCard(cardData) {
     popupImage.alt = cardData.name;
     openPopup(imagePreview);
   });
-  //image preview close button
-  previewCloseButton.addEventListener("click", function() {
-    closePopup(imagePreview);
-  });
+  // //image preview close button
+  // previewCloseButton.addEventListener("click", function() {
+  //   closePopup(imagePreview);
+  // });
 
 
   // find card title
@@ -234,6 +249,7 @@ addCloseButton.addEventListener('click', function () {
   /* -------------------------------------------------------------------------- */
   
   function handleEscape(e) {
+    console.log("ran escape")
     const key = e.key;
     if (key === "Escape") {
       const openedPopup = document.querySelector(".popup_is-open");
@@ -241,15 +257,15 @@ addCloseButton.addEventListener('click', function () {
     };
   };
 
-  document.addEventListener('keydown', handleEscape);
+  // document.addEventListener('keydown', handleEscape);
 
   /* -------------------------------------------------------------------------- */
   /*                          Click on OverLay event                            */
   /* -------------------------------------------------------------------------- */
 
-   document.addEventListener('click', (event) => {
-    if (event.target.classList.contains("popup_is-open")) {
-      const openedPopup = document.querySelector(".popup_is-open");
-      closePopup(openedPopup);
-    }
-    });
+  //  popup.addEventListener('click', (event) => {
+  //   if (event.target.classList.contains("popup_is-open")) {
+      
+  //     closePopup(event.target);
+  //   }
+  //   });
