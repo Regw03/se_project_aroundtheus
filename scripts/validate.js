@@ -71,6 +71,7 @@ const enableValidation = (settings) => {
     });
 
 };
+ 
 
 enableValidation({
     formSelector: ".popup__form",

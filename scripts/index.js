@@ -29,6 +29,10 @@ const initialCards = [
   },
 ];
 
+/* ---------------------------------- classes --------------------------------- */
+
+// const editFormValidator = new FormValidator(settings, editform);
+// const addFormValidator = new FormValidator(settings, addform);
 
 /* -------------------------------------------------------------------------- */
 /*                               //buttons nodes                              */
