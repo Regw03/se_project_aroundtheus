@@ -1,3 +1,9 @@
+
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                               // cards array                               */
 /* -------------------------------------------------------------------------- */
@@ -29,10 +35,9 @@ const initialCards = [
   },
 ];
 
-/* ---------------------------------- classes --------------------------------- */
 
-// const editFormValidator = new FormValidator(settings, editform);
-// const addFormValidator = new FormValidator(settings, addform);
+
+
 
 /* -------------------------------------------------------------------------- */
 /*                               //buttons nodes                              */
@@ -94,6 +99,8 @@ const linkInputValue = addCardForm.querySelector('#add_link-input');
 const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
 const cardListEl = document.querySelector('.elements__card-grid');
 
+
+
 /* -------------------------------------------------------------------------- */
 /*                                image preview                                */
 /* -------------------------------------------------------------------------- */
@@ -102,6 +109,27 @@ const cardListEl = document.querySelector('.elements__card-grid');
   const popupImage = imagePreview.querySelector(".popup__image")
   
   const popupImageTitle = imagePreview.querySelector(".popup__image-title")
+
+
+/* ---------------------------------- classes --------------------------------- */
+
+const settings = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible",
+};
+
+
+const editFormValidator = new FormValidator(settings, popupEditForm);
+editFormValidator.enableValidation();
+const addFormValidator = new FormValidator(settings, addCardForm);
+addFormValidator.enableValidation();
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                            //  profile edit form                           */
 /* -------------------------------------------------------------------------- */
@@ -207,7 +235,7 @@ function createCard(cardData) {
 };
 
 function renderCard(cardData) {
-  const cardElement = createCard(cardData);
+  const cardElement = createCard(cardData, cardTemplate);
   cardListEl.prepend(cardElement);
 };
 
