@@ -2,6 +2,7 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
+import { openPopup, closePopup, imagePreview } from "./utils.js";
 
 
 /* -------------------------------------------------------------------------- */
@@ -96,19 +97,10 @@ const linkInputValue = addCardForm.querySelector('#add_link-input');
 /*                              // card template                              */
 /* -------------------------------------------------------------------------- */
 
-const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
+const cardSelector = '#card-template';
 const cardListEl = document.querySelector('.elements__card-grid');
 
 
-
-/* -------------------------------------------------------------------------- */
-/*                                image preview                                */
-/* -------------------------------------------------------------------------- */
-  // card image preview
-  const imagePreview = document.querySelector('#image_preview');
-  const popupImage = imagePreview.querySelector(".popup__image")
-  
-  const popupImageTitle = imagePreview.querySelector(".popup__image-title")
 
 
 /* ---------------------------------- classes --------------------------------- */
@@ -134,23 +126,7 @@ addFormValidator.enableValidation();
 /*                            //  profile edit form                           */
 /* -------------------------------------------------------------------------- */
 
-function openPopup(popup) {
-  popup.classList.add("popup_is-open");
-  document.addEventListener('keydown', handleEscape);
-  popup.addEventListener('click', handleOverlayClick);
-};
-function handleOverlayClick(event) {
-    if (event.target.classList.contains("popup_is-open")) {
-      
-      closePopup(event.target);
-    }
-    };
 
-function closePopup(popup) {
-  popup.classList.remove("popup_is-open");
-  document.removeEventListener('keydown', handleEscape);
-  popup.removeEventListener('click', handleOverlayClick);
-}
 
  //image preview close button
   previewCloseButton.addEventListener("click", function() {
@@ -183,60 +159,12 @@ popupEditForm.addEventListener('submit', (event) => {
 /*                      // cards ellement / functions                         */
 /* -------------------------------------------------------------------------- */
 
-function createCard(cardData) {
-  // clone template
-  const cardElement = cardTemplate.cloneNode(true);
 
-  //like button
-  const likeButton = cardElement.querySelector('#like-button');
-
-  //cards like event
-  likeButton.addEventListener('click', function () {
-    likeButton.classList.toggle('elements__card-button_active');
-  });
-  //trash button
-  const cardDelete = cardElement.querySelector('.elements__trash-button');
-
-  //cards delete event
-  cardDelete.addEventListener('click', function () {
-    cardElement.remove();
-  });
-
-  
-
-  // card image
-  const imageEl = cardElement.querySelector('.elements__card-image');
-
-  //image preview popup
-  imageEl.addEventListener('click', function () {
-    
-    popupImageTitle.textContent = cardData.name;
-    popupImage.src = cardData.link;
-    popupImage.alt = cardData.name;
-    openPopup(imagePreview);
-  });
-
-
-
-  // find card title
-  const titleEl = cardElement.querySelector('.elements__card-title');
-
-  // replace img src
-  imageEl.src = cardData.link;
-
-  // replace img alt
-  imageEl.alt = cardData.name;
-
-  // replace title
-  titleEl.textContent = cardData.name;
-
-  // append to list
-  return cardElement;
-};
 
 function renderCard(cardData) {
-  const cardElement = createCard(cardData, cardTemplate);
-  cardListEl.prepend(cardElement);
+  const card = new Card(cardData, cardSelector);
+  // const cardElement = createCard(cardData, cardTemplate);
+  cardListEl.prepend(card.getView());
 };
 
 initialCards.forEach(renderCard);
@@ -267,16 +195,4 @@ addCloseButton.addEventListener('click', function () {
     disableSubmitButton(button, {inactiveButtonClass: "popup__button_disabled"});
     
   });
-
-  /* -------------------------------------------------------------------------- */
-  /*                              esc button event                              */
-  /* -------------------------------------------------------------------------- */
-  
-  function handleEscape(e) {
-    const key = e.key;
-    if (key === "Escape") {
-      const openedPopup = document.querySelector(".popup_is-open");
-      closePopup(openedPopup);
-    };
-  };
 
