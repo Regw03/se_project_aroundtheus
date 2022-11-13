@@ -258,7 +258,7 @@ addCloseButton.addEventListener('click', function () {
     const linkInputValue = event.target.link.value;
     renderCard({
       name: titleInputValue.value,
-      link: linkInputValue,
+      link: linkInputValue.value,
     });
     
     closePopup(addCardPopup);

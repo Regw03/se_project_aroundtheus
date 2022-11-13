@@ -25,7 +25,7 @@ class FormValidator {
         inputList.forEach((input) => {
             input.addEventListener("input", (e) => {
                 //check validation
-                _checkInputValidity(this._form, input, this._settings);
+                this._checkInputValidity(this._form, input, this._settings);
                 //toggle the button
                 this._toggleButton(inputList, submitButton, this._settings);
             
@@ -35,7 +35,7 @@ class FormValidator {
     }
 //need help from here 
 
-    _showInputError(input, validationMessage) {
+    _showInputError(input) {
         const errorSpan = this._form.querySelector('#' + input.id + '-error');
             //add Error message
             errorSpan.textContent = input.validationMessage;
@@ -44,7 +44,7 @@ class FormValidator {
             
     };
         
-    _hideInputError(input, validationMessage) {
+    _hideInputError(input) {
          const errorSpan = this._form.querySelector('#' + input.id + '-error');
         //remove Error message
         errorSpan.textContent = "";
@@ -57,9 +57,9 @@ class FormValidator {
 
     _checkInputValidity (_form, input, _settings) {
         if(input.validity.valid) {
-        hideInputError(input, this._form, this._settings);
+        this._hideInputError(input, this._form, this._settings);
         } else {
-        showInputError(input, this._form, this._settings);
+        this._showInputError(input, this._form, this._settings);
         };
     };
 
@@ -72,9 +72,9 @@ class FormValidator {
 
     _toggleButton (inputList, button, _settings) {
         if( this._hasValidInputs(inputList)) {
-        enableSubmitButton(button, this._settings);
+        this._enableSubmitButton(button, this._settings);
          } else {
-        disableSubmitButton(button, this._settings);
+        this._disableSubmitButton(button, this._settings);
         };
     };
 
