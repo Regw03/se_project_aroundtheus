@@ -180,6 +180,11 @@ addCloseButton.addEventListener('click', function () {
 });
 
 
+const disableSubmitButton = (button, settings) => {
+        button.disabled = true;
+        button.classList.add(settings.inactiveButtonClass);
+}
+
 //create new card
   addCardForm.addEventListener('submit', function (event) {
     event.preventDefault();
