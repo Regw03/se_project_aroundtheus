@@ -191,7 +191,7 @@ const disableSubmitButton = (button, settings) => {
     const linkInputValue = event.target.link.value;
     renderCard({
       name: titleInputValue.value,
-      link: linkInputValue.value,
+      link: linkInputValue,
     });
     
     closePopup(addCardPopup);
