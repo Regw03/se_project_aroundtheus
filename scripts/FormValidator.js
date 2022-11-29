@@ -20,7 +20,7 @@ class FormValidator {
 
         const inputList = [...this._form.querySelectorAll(this._settings.inputSelector)];
         const submitButton = this._form.querySelector(this._settings.submitButtonSelector);
-        // this._toggleButton(inputList, submitButton, settings);
+         this._toggleButton(inputList, submitButton, settings);
 
         inputList.forEach((input) => {
             input.addEventListener("input", (e) => {
@@ -36,19 +36,19 @@ class FormValidator {
 //need help from here 
 
     _showInputError(input) {
-        const errorSpan = this._form.querySelector('#' + input.id + '-error');
+        const errorElement = this._form.querySelector('#' + input.id + '-error');
             //add Error message
-            errorSpan.textContent = input.validationMessage;
-            errorSpan.classList.add(this._errorClass);
+            errorElement.textContent = input.validationMessage;
+            errorElement.classList.add(this._errorClass);
             input.classList.add(this._inputErrorClass);
             
     };
         
     _hideInputError(input) {
-         const errorSpan = this._form.querySelector('#' + input.id + '-error');
+         const errorElement = this._form.querySelector('#' + input.id + '-error');
         //remove Error message
-        errorSpan.textContent = "";
-        errorSpan.classList.remove(this._errorClass);
+        errorElement.textContent = "";
+        errorElement.classList.remove(this._errorClass);
         input.classList.remove(this._inputErrorClass);
     };
 

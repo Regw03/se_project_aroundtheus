@@ -1,4 +1,5 @@
-import { popupImage, popupImageTitle, imagePreview, openPopup } from './utils.js';
+import {  openPopup } from './utils.js';
+import {popupImage, popupImageTitle, imagePreview,} from "./index.js";
 
 
 class Card {
@@ -7,20 +8,20 @@ class Card {
     this._link = cardData.link
 
     this._cardSelector = cardSelector
-  }
+  };
 
   _getTemplate() {
     return document
       .querySelector(this._cardSelector)
       .content.querySelector('.elements__card')
       .cloneNode(true)
-  }
+  };
 
   getView() {
     this._cardElement = this._getTemplate();
     this._setEventListeners();
 
-    // replace img src
+  // replace img src
   this._cardElement.querySelector(".elements__card-image").src = this._link;
 
   // replace img alt
@@ -31,19 +32,21 @@ class Card {
 
   return this._cardElement;
 
+  };
+
+  _handleDelete = () => {
+    this._cardElement.remove();
   }
 
   _setEventListeners(){
-    //like button
+  //like button
   const likeButton = this._cardElement.querySelector('#like-button');
   //cards like event
   likeButton.addEventListener('click', function () {
     likeButton.classList.toggle('elements__card-button_active');
   });
-    //cards delete event
-  this._cardElement.querySelector('.elements__trash-button').addEventListener('click', () => {
-    this._cardElement.remove();
-  });
+  //cards delete event
+  this._cardElement.querySelector('.elements__trash-button').addEventListener('click', this._handleDelete);
 
   //image preview popup
   this._cardElement.querySelector('.elements__card-image').addEventListener('click', () => {
@@ -54,8 +57,8 @@ class Card {
     openPopup(imagePreview);
   });
 
-  }
+  };
 
-}
+};
 
 export default Card

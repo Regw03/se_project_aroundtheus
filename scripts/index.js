@@ -2,7 +2,7 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
-import { openPopup, closePopup, imagePreview } from "./utils.js";
+import { openPopup, closePopup} from "./utils.js";
 
 
 /* -------------------------------------------------------------------------- */
@@ -99,6 +99,9 @@ const linkInputValue = addCardForm.querySelector('#add_link-input');
 
 const cardSelector = '#card-template';
 const cardListEl = document.querySelector('.elements__card-grid');
+export const imagePreview = document.querySelector('#image_preview');
+export const popupImage = imagePreview.querySelector(".popup__image");
+export const popupImageTitle = imagePreview.querySelector(".popup__image-title");
 
 
 

@@ -70,12 +70,15 @@
     height: 19px;
     min-width: 21px;
     transition: all .15s;
+    position: relative;
+    right: 1px;
+    bottom: -5px;
 }
 
 .elements__card-button:hover{
     cursor: pointer;
     opacity: .5;
-    transform: matrix(0.7, 0.72, -0.71, 0.7, 0, 0);
+    /* transform: matrix(0.7, 0.72, -0.71, 0.7, 0, 0); */
 }
 
 .elements__card-button_active{
