@@ -1,15 +1,13 @@
 class FormValidator {
 
+    
+ 
+    
+
     constructor(settings, formEl) {
         this._settings = settings;
         this._form = formEl;
-        this._formSelector = settings.formSelector;
-        this._inputSelector = settings.inputSelector;
-        this._submitButtonSelector = settings.submitButtonSelector;
-        this._inactiveButtonClass = settings.inactiveButtonClass;
-        this._inputErrorClass = settings.inputErrorClass;
-        this._errorClass = settings.errorClass;
-        this._input = settings.input
+        
         
         
     };
@@ -70,7 +68,9 @@ class FormValidator {
 
 
 
-    _toggleButton (inputList, button, _settings) {
+    _toggleButton () {
+         const inputList = [...this._form.querySelectorAll(this._settings.inputSelector)];
+         const button = this._form.querySelector(this._settings.submitButtonSelector);
         if( this._hasValidInputs(inputList)) {
         this._enableSubmitButton(button, this._settings);
          } else {
@@ -104,14 +104,7 @@ class FormValidator {
 };
 
 
-const settings = {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__submit",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__error_visible",
-};
+const settings = {};
 
 
 
