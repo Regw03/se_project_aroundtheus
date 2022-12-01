@@ -183,10 +183,7 @@ addCloseButton.addEventListener('click', function () {
 });
 
 
-const disableSubmitButton = (button, settings) => {
-        button.disabled = true;
-        button.classList.add(settings.inactiveButtonClass);
-}
+
 
 //create new card
   addCardForm.addEventListener('submit', function (event) {
@@ -200,7 +197,6 @@ const disableSubmitButton = (button, settings) => {
     closePopup(addCardPopup);
     addCardForm.reset();
     const button = document.querySelector("#add_submit");
-    disableSubmitButton(button, {inactiveButtonClass: "popup__button_disabled"});
-    
+    addFormValidator.disableSubmitButton(button, {inactiveButtonClass: "popup__button_disabled"});
   });
 

@@ -74,7 +74,7 @@ class FormValidator {
         if( this._hasValidInputs(inputList)) {
         this._enableSubmitButton(button, this._settings);
          } else {
-        this._disableSubmitButton(button, this._settings);
+        this.disableSubmitButton(button, this._settings);
         };
     };
 
@@ -85,7 +85,7 @@ class FormValidator {
         button.classList.remove(this._settings.inactiveButtonClass);
     }
 
-    _disableSubmitButton (button, _settings) {
+    disableSubmitButton (button, _settings) {
         button.disabled = true;
         button.classList.add(this._settings.inactiveButtonClass);
     }
@@ -97,7 +97,7 @@ class FormValidator {
     enableValidation() {
 
         this._form.addEventListener("submit", (e) => e.preventDefault())
-        this._setEventListeners(this._form, this._settings);
+        this._setEventListeners();
         
     };
 
