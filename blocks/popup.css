@@ -92,6 +92,7 @@
 }
 
 .popup__input-container-error {
+  color: red;
   border-color: red;
   display: block;
   padding-top: 5px;
@@ -100,6 +101,7 @@
   line-height: 14.52px;
   margin: 0
 }
+
 /* submit button validation */
 
 .popup__submit {
@@ -153,9 +155,7 @@
   position: absolute;
 }
 
-.popup__input-container-error {
-  color: red;
-}
+
 
 @media screen and (max-width: 600px) {
   .popup__content {
