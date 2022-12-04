@@ -7,7 +7,7 @@ class FormValidator {
     constructor(settings, formEl) {
         this._settings = settings;
         this._form = formEl;
-        
+        this._errorClass = settings.errorClass;
         
         
     };
@@ -100,6 +100,7 @@ class FormValidator {
         this._setEventListeners();
         
     };
+
 
 };
 
