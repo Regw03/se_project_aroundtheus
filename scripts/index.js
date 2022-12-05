@@ -201,8 +201,6 @@ addCardForm.addEventListener('submit', function(event) {
     closePopup(addCardPopup);
     addCardForm.reset();
     const button = document.querySelector("#add_submit");
-    addFormValidator.disableSubmitButton(button, {
-        inactiveButtonClass: "popup__button_disabled"
-    });
+    addFormValidator.disableSubmitButton();
 });
 

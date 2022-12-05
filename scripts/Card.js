@@ -47,25 +47,27 @@ class Card {
     _setEventListeners() {
 
         //like button
-        const likeButton = this._cardElement.querySelector('#like-button');
+         this.likeButton = this._cardElement.querySelector('#like-button');
 
         //cards like event
-        likeButton.addEventListener('click', function() {
-            likeButton.classList.toggle('elements__card-button_active');
-        });
+        this.likeButton.addEventListener('click', this._toggleLike);
 
         //cards delete event
         this._cardElement.querySelector('.elements__trash-button').addEventListener('click', this._handleDelete);
 
         //image preview popup
-        this._cardElement.querySelector('.elements__card-image').addEventListener('click', () => {
+        this._cardElement.querySelector('.elements__card-image').addEventListener('click', this._togglePreview);
+    };
 
-            popupImageTitle.textContent = this._name;
-            popupImage.src = this._link;
-            popupImage.alt = this._name;
-            openPopup(imagePreview);
-        });
+    _toggleLike = () => {
+        this.likeButton.classList.toggle('elements__card-button_active');
+    };
 
+    _togglePreview = () => {
+         popupImageTitle.textContent = this._name;
+         popupImage.src = this._link;
+         popupImage.alt = this._name;
+         openPopup(imagePreview);
     };
 
 };

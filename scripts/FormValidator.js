@@ -5,8 +5,8 @@ class FormValidator {
 
         this._settings = settings;
         this._form = formEl;
-        this._errorClass = settings.errorClass;
-        this._inputErrorClass = settings.inputErrorClass
+        // this._errorClass = settings.errorClass;
+        // this._inputErrorClass = settings.inputErrorClass
 
     };
 
@@ -48,8 +48,8 @@ class FormValidator {
         //remove Error message
 
         errorElement.textContent = "";
-        errorElement.classList.remove(this._errorClass);
-        input.classList.remove(this._inputErrorClass);
+        errorElement.classList.remove(this._settings.errorClass);
+        input.classList.remove(this._settings.inputErrorClass);
     };
 
 
@@ -71,24 +71,24 @@ class FormValidator {
 
     _toggleButton() {
         const inputList = [...this._form.querySelectorAll(this._settings.inputSelector)];
-        const button = this._form.querySelector(this._settings.submitButtonSelector);
+        this.button = this._form.querySelector(this._settings.submitButtonSelector);
         if (this._hasValidInputs(inputList)) {
-            this._enableSubmitButton(button, this._settings);
+            this._enableSubmitButton();
         } else {
-            this.disableSubmitButton(button, this._settings);
+            this.disableSubmitButton();
         };
     };
 
 
 
-    _enableSubmitButton(button, _settings) {
-        button.disabled = false;
-        button.classList.remove(this._settings.inactiveButtonClass);
+    _enableSubmitButton() {
+        this.button.disabled = false;
+        this.button.classList.remove(this._settings.inactiveButtonClass);
     }
 
-    disableSubmitButton(button, _settings) {
-        button.disabled = true;
-        button.classList.add(this._settings.inactiveButtonClass);
+    disableSubmitButton() {
+        this.button.disabled = true;
+        this.button.classList.add(this._settings.inactiveButtonClass);
     }
 
 
