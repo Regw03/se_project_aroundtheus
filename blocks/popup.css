@@ -155,8 +155,6 @@
   position: absolute;
 }
 
-
-
 @media screen and (max-width: 600px) {
   .popup__content {
     max-width: 282px;

@@ -1,41 +1,41 @@
-
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
-import { openPopup, closePopup} from "./utils.js";
+import {
+    openPopup,
+    closePopup
+} from "./utils.js";
 
 
 /* -------------------------------------------------------------------------- */
 /*                               // cards array                               */
 /* -------------------------------------------------------------------------- */
 
-const initialCards = [
-  {
-    name: 'Yosemite Valley',
-    link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
-  },
-  {
-    name: 'Lake Louise',
-    link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg',
-  },
-  {
-    name: 'Bald Mountains',
-    link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg',
-  },
-  {
-    name: 'Latemar',
-    link: 'https://code.s3.yandex.net/web-code/latemar.jpg',
-  },
-  {
-    name: 'Vanoise National Park',
-    link: 'https://code.s3.yandex.net/web-code/vanoise.jpg',
-  },
-  {
-    name: 'Lago di Braies',
-    link: 'https://code.s3.yandex.net/web-code/lago.jpg',
-  },
+const initialCards = [{
+        name: 'Yosemite Valley',
+        link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
+    },
+    {
+        name: 'Lake Louise',
+        link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg',
+    },
+    {
+        name: 'Bald Mountains',
+        link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg',
+    },
+    {
+        name: 'Latemar',
+        link: 'https://code.s3.yandex.net/web-code/latemar.jpg',
+    },
+    {
+        name: 'Vanoise National Park',
+        link: 'https://code.s3.yandex.net/web-code/vanoise.jpg',
+    },
+    {
+        name: 'Lago di Braies',
+        link: 'https://code.s3.yandex.net/web-code/lago.jpg',
+    },
 ];
-
 
 
 
@@ -86,7 +86,7 @@ const addCardForm = document.querySelector('#add-form');
 /* -------------------------------------------------------------------------- */
 //edit form data
 const nameInputValue = popupEditForm.querySelector('#name-input');
-const professionInputValue = popupEditForm.querySelector('#profession-input',);
+const professionInputValue = popupEditForm.querySelector('#profession-input', );
 
 //card add form data
 const titleInputValue = addCardForm.querySelector('#add_title-input');
@@ -131,31 +131,35 @@ addFormValidator.enableValidation();
 
 
 
- //image preview close button
-  previewCloseButton.addEventListener("click", function() {
+//image preview close button
+
+previewCloseButton.addEventListener("click", function() {
     closePopup(imagePreview);
-  });
+});
 
 //edit popup is open event
-profileEditButton.addEventListener('click', function () {
-  nameInputValue.value = profileTitle.textContent;
-  professionInputValue.value = profileProfession.textContent;
-  openPopup(profileEditPopup);
+
+profileEditButton.addEventListener('click', function() {
+    nameInputValue.value = profileTitle.textContent;
+    professionInputValue.value = profileProfession.textContent;
+    openPopup(profileEditPopup);
 });
 
 //edit popup close event
-profileEditClose.addEventListener('click', function () {
-  closePopup(profileEditPopup);
+
+profileEditClose.addEventListener('click', function() {
+    closePopup(profileEditPopup);
 });
 
 //profile save event
+
 popupEditForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const nameInputValue = event.target.name.value;
-  const professionInputValue = event.target.profession.value;
-  profileTitle.textContent = nameInputValue;
-  profileProfession.textContent = professionInputValue;
-  closePopup(profileEditPopup);
+    event.preventDefault();
+    const nameInputValue = event.target.name.value;
+    const professionInputValue = event.target.profession.value;
+    profileTitle.textContent = nameInputValue;
+    profileProfession.textContent = professionInputValue;
+    closePopup(profileEditPopup);
 });
 
 /* -------------------------------------------------------------------------- */
@@ -165,38 +169,40 @@ popupEditForm.addEventListener('submit', (event) => {
 
 
 function renderCard(cardData) {
-  const card = new Card(cardData, cardSelector);
-  // const cardElement = createCard(cardData, cardTemplate);
-  cardListEl.prepend(card.getView());
+    const card = new Card(cardData, cardSelector);
+    cardListEl.prepend(card.getView());
 };
 
 initialCards.forEach(renderCard);
 
 //cards add form
 
-addCardButton.addEventListener('click', function () {
-  openPopup(addCardPopup);
+addCardButton.addEventListener('click', function() {
+    openPopup(addCardPopup);
 });
 
-addCloseButton.addEventListener('click', function () {
-  closePopup(addCardPopup);
+addCloseButton.addEventListener('click', function() {
+    closePopup(addCardPopup);
 });
 
 
 
 
 //create new card
-  addCardForm.addEventListener('submit', function (event) {
+
+addCardForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const linkInputValue = event.target.link.value;
     renderCard({
-      name: titleInputValue.value,
-      link: linkInputValue,
+        name: titleInputValue.value,
+        link: linkInputValue,
     });
-    
+
     closePopup(addCardPopup);
     addCardForm.reset();
     const button = document.querySelector("#add_submit");
-    addFormValidator.disableSubmitButton(button, {inactiveButtonClass: "popup__button_disabled"});
-  });
+    addFormValidator.disableSubmitButton(button, {
+        inactiveButtonClass: "popup__button_disabled"
+    });
+});
 
