@@ -7,7 +7,6 @@
     <meta name="author" content="Reg Wemple" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
   <body class="page">
@@ -16,7 +15,7 @@
         <div class="header__title-logo">
           <img
             class="header__image"
-            src="./images/headerlogo.png"
+            src="<%=require('./images/headerlogo.png')%>"
             alt="page title logo"
           />
         </div>
@@ -26,7 +25,7 @@
         <section class="profile">
           <img
             class="profile__avatar"
-            src="./images/Avatar.png"
+            src="<%=require('./images/Avatar.png')%>"
             alt="avatar image"
             id="avatar"
           />
@@ -147,10 +146,6 @@
          <button class="elements__trash-button" type="button"></button>
       </li>
     </template>
-
-    <!-- <script defer type="module" src="./scripts/validate.js"></script> -->
-    <script defer type="module" src="./scripts/index.js"></script>
-    <!-- <script defer type="module" src="./scripts/FormValidator.js"></script> -->
 
   </body>
 </html>

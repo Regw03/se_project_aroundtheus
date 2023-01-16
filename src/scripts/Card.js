@@ -5,7 +5,7 @@ import {
     popupImage,
     popupImageTitle,
     imagePreview,
-} from "./index.js";
+} from "../index.js";
 
 
 class Card {
