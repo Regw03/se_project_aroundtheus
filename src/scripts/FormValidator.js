@@ -2,8 +2,7 @@ class FormValidator {
   constructor(settings, formEl) {
     this._settings = settings
     this._form = formEl
-    // this._errorClass = settings.errorClass;
-    // this._inputErrorClass = settings.inputErrorClass
+    
   }
 
   _setEventListeners() {

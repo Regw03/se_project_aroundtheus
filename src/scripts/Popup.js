@@ -1,6 +1,8 @@
 class Popup{
-    constructor(popupSelector){
-
+    constructor(popup){
+        this.popup = popup;
+        this.openPopup = openPopup;
+        this.closePopup = closePopup;
     }
 
     open(){
