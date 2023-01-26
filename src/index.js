@@ -1,10 +1,13 @@
 import Card from "./scripts/Card.js";
 import FormValidator from "./scripts/FormValidator.js";
-import "./pages/index.css"
+import "./pages/index.css";
 import {
     openPopup,
     closePopup
 } from "./scripts/utils.js";
+
+import UserInfo from "./scripts/UserInfo.js";
+import PopupWithForm from "./scripts/PopupWithForm.js";
 
 
 /* -------------------------------------------------------------------------- */
@@ -77,7 +80,7 @@ const profileEditPopup = document.querySelector('#edit-popup');
 /*                                 //card form                                */
 /* -------------------------------------------------------------------------- */
 //add popup
-const addCardPopup = document.querySelector('#add-popup');
+// const addCardPopup = document.querySelector('#add-popup');
 // add button form
 const addCardForm = document.querySelector('#add-form');
 
@@ -123,7 +126,29 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
+const name = document.querySelector('#infoname');
+const profession = document.querySelector('#profession');
 
+const userinfo = new UserInfo(name, profession);
+const addCardPopup = new PopupWithForm('#add-popup', (data) => {
+    renderCard({
+        name: data.name,
+        link: data.link,
+    });
+
+    closePopup(addCardPopup);
+    addCardForm.reset();
+    const button = document.querySelector("#add_submit");
+    addFormValidator.disableSubmitButton();
+})
+    addCardPopup.setEventListeners();
+const editPopup = new PopupWithForm('#edit-popup', (data) =>{
+    profileTitle.textContent = data.name;
+    profileProfession.textContent = data.profession;
+    closePopup(profileEditPopup);
+
+});
+    editPopup.setEventListeners();
 
 /* -------------------------------------------------------------------------- */
 /*                            //  profile edit form                           */
@@ -153,14 +178,8 @@ profileEditClose.addEventListener('click', function() {
 
 //profile save event
 
-popupEditForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const nameInputValue = event.target.name.value;
-    const professionInputValue = event.target.profession.value;
-    profileTitle.textContent = nameInputValue;
-    profileProfession.textContent = professionInputValue;
-    closePopup(profileEditPopup);
-});
+
+    
 
 /* -------------------------------------------------------------------------- */
 /*                      // cards ellement / functions                         */
@@ -190,17 +209,17 @@ addCloseButton.addEventListener('click', function() {
 
 //create new card
 
-addCardForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const linkInputValue = event.target.link.value;
-    renderCard({
-        name: titleInputValue.value,
-        link: linkInputValue,
-    });
 
-    closePopup(addCardPopup);
-    addCardForm.reset();
-    const button = document.querySelector("#add_submit");
-    addFormValidator.disableSubmitButton();
-});
+    // event.preventDefault();
+    // const linkInputValue = event.target.link.value;
+    // renderCard({
+    //     name: titleInputValue.value,
+    //     link: linkInputValue,
+    // });
+
+    // closePopup(addCardPopup);
+    // addCardForm.reset();
+    // const button = document.querySelector("#add_submit");
+    // addFormValidator.disableSubmitButton();
+
 

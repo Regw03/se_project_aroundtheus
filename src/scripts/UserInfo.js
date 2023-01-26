@@ -1,26 +1,21 @@
-class UserInfo{
-    constructor(nameInputValue, proffesionInputValue){
-        this.name = nameInputValue;
-        this.proffesion = proffesionInputValue;
+export default class UserInfo{
+    constructor(name, profession){
+        this.name = name;
+        this.profession = profession;
     };
 
     getUserInfor(){
-        profileEditButton.addEventListener('click', function() {
-            nameInputValue.value = profileTitle.textContent;
-            professionInputValue.value = profileProfession.textContent;
-            openPopup(profileEditPopup);
-        });
+        return{
+            profession: this.profession,
+            name: this.name
+        }
+
     }
 
-    setUserInfo(){
-        //profile save event
-        popupEditForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const nameInputValue = event.target.name.value;
-            const professionInputValue = event.target.profession.value;
-            profileTitle.textContent = nameInputValue;
-            profileProfession.textContent = professionInputValue;
-            closePopup(profileEditPopup);
-        });
+    setUserInfo(name, profession){
+
+       this.name = name;
+       this. profession = profession;
+
     }
 }
