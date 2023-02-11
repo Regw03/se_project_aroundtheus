@@ -130,6 +130,7 @@ const name = document.querySelector('#infoname');
 const profession = document.querySelector('#profession');
 
 const userinfo = new UserInfo(name, profession);
+
 const addCardPopup = new PopupWithForm('#add-popup', (data) => {
     renderCard({
         name: data.name,
@@ -141,6 +142,7 @@ const addCardPopup = new PopupWithForm('#add-popup', (data) => {
     const button = document.querySelector("#add_submit");
     addFormValidator.disableSubmitButton();
 })
+
     addCardPopup.setEventListeners();
 const editPopup = new PopupWithForm('#edit-popup', (data) =>{
     profileTitle.textContent = data.name;
@@ -197,11 +199,11 @@ initialCards.forEach(renderCard);
 //cards add form
 
 addCardButton.addEventListener('click', function() {
-    openPopup(addCardPopup);
+    addCardPopup.open()
 });
 
 addCloseButton.addEventListener('click', function() {
-    closePopup(addCardPopup);
+    addCardPopup.close()
 });
 
 

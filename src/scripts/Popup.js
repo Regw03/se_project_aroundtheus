@@ -21,11 +21,14 @@ export default class Popup{
     };
 
     _handleEscClase(){
-
+        if (EventTarget.key === "Escape"){
+            this.closePopup();
+        }
     };
 
     setEventListeners(){
-         
+        //  this.closeButton.addEventListener("click", () => this.closePopup());
+        //  this._popupElement.addEventListener("click", this._handleOverlayClose);
     }
 
 }
