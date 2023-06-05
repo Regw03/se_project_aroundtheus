@@ -8,6 +8,7 @@ import {
 
 import UserInfo from "./scripts/UserInfo.js";
 import PopupWithForm from "./scripts/PopupWithForm.js";
+import Section from "./scripts/Section.js";
 
 
 /* -------------------------------------------------------------------------- */
@@ -40,8 +41,14 @@ const initialCards = [{
     },
 ];
 
+const cardSelector = '#card-template';
+const cardListEl = document.querySelector('.elements__card-grid');
 
-
+const section = new Section({items:initialCards, renderer:(item)=>{
+const card = renderCard(item);
+section.addItem(card);
+}},".elements__card-grid");
+section.renderItems();
 
 /* -------------------------------------------------------------------------- */
 /*                               //buttons nodes                              */
@@ -100,8 +107,8 @@ const linkInputValue = addCardForm.querySelector('#add_link-input');
 /*                              // card template                              */
 /* -------------------------------------------------------------------------- */
 
-const cardSelector = '#card-template';
-const cardListEl = document.querySelector('.elements__card-grid');
+
+
 export const imagePreview = document.querySelector('#image_preview');
 export const popupImage = imagePreview.querySelector(".popup__image");
 export const popupImageTitle = imagePreview.querySelector(".popup__image-title");
@@ -132,12 +139,15 @@ const profession = document.querySelector('#profession');
 const userinfo = new UserInfo(name, profession);
 
 const addCardPopup = new PopupWithForm('#add-popup', (data) => {
-    renderCard({
+    const card = renderCard({
         name: data.name,
         link: data.link,
     });
 
-    closePopup(addCardPopup);
+    section.addItem(card);
+
+    // closePopup(addCardPopup);
+    addCardPopup.close();
     addCardForm.reset();
     const button = document.querySelector("#add_submit");
     addFormValidator.disableSubmitButton();
@@ -191,10 +201,10 @@ profileEditClose.addEventListener('click', function() {
 
 function renderCard(cardData) {
     const card = new Card(cardData, cardSelector);
-    cardListEl.prepend(card.getView());
+    return card.getView();
 };
 
-initialCards.forEach(renderCard);
+// initialCards.forEach(renderCard);
 
 //cards add form
 
