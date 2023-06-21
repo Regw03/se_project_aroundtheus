@@ -1,10 +1,10 @@
 import Card from "./scripts/Card.js";
 import FormValidator from "./scripts/FormValidator.js";
 import "./pages/index.css";
-import {
-    openPopup,
-    closePopup
-} from "./scripts/utils.js";
+// import {
+//     openPopup,
+//     closePopup
+// } from "./scripts/utils.js";
 
 import UserInfo from "./scripts/UserInfo.js";
 import PopupWithForm from "./scripts/PopupWithForm.js";

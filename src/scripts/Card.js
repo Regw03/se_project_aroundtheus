@@ -1,7 +1,4 @@
 import {
-    openPopup
-} from './utils.js';
-import {
     popupImage,
     popupImageTitle,
     imagePreview,
