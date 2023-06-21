@@ -1,14 +1,15 @@
-import Card from "./scripts/Card.js";
-import FormValidator from "./scripts/FormValidator.js";
-import "./pages/index.css";
+import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import "./index.css";
 // import {
 //     openPopup,
 //     closePopup
 // } from "./scripts/utils.js";
 
-import UserInfo from "./scripts/UserInfo.js";
-import PopupWithForm from "./scripts/PopupWithForm.js";
-import Section from "./scripts/Section.js";
+import UserInfo from "../scripts/UserInfo.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
+import Section from "../scripts/Section.js";
+import PopupWithImage from "../scripts/PopupWithImage.js"
 
 
 /* -------------------------------------------------------------------------- */
@@ -157,7 +158,7 @@ const addCardPopup = new PopupWithForm('#add-popup', (data) => {
 const editPopup = new PopupWithForm('#edit-popup', (data) =>{
     profileTitle.textContent = data.name;
     profileProfession.textContent = data.profession;
-    closePopup(profileEditPopup);
+    editPopup.close();
 
 });
     editPopup.setEventListeners();
@@ -166,41 +167,31 @@ const editPopup = new PopupWithForm('#edit-popup', (data) =>{
 /*                            //  profile edit form                           */
 /* -------------------------------------------------------------------------- */
 
-
-
-//image preview close button
-
-previewCloseButton.addEventListener("click", function() {
-    closePopup(imagePreview);
-});
+const imagePreviewPopup = new PopupWithImage('#image_preview')
+imagePreviewPopup.setEventListeners();
 
 //edit popup is open event
 
 profileEditButton.addEventListener('click', function() {
     nameInputValue.value = profileTitle.textContent;
     professionInputValue.value = profileProfession.textContent;
-    openPopup(profileEditPopup);
+    editPopup.open();
 });
 
-//edit popup close event
-
-profileEditClose.addEventListener('click', function() {
-    closePopup(profileEditPopup);
-});
-
-//profile save event
 
 
-    
+
 
 /* -------------------------------------------------------------------------- */
 /*                      // cards ellement / functions                         */
 /* -------------------------------------------------------------------------- */
 
-
+function handelImageClick({name, link}){
+imagePreviewPopup.open({name, link});
+};
 
 function renderCard(cardData) {
-    const card = new Card(cardData, cardSelector);
+    const card = new Card(cardData, cardSelector, handelImageClick);
     return card.getView();
 };
 

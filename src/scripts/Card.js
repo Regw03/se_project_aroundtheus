@@ -2,14 +2,14 @@ import {
     popupImage,
     popupImageTitle,
     imagePreview,
-} from "../index.js";
+} from "../pages/index.js";
 
 
 export default class Card {
-    constructor(cardData, cardSelector) {
+    constructor(cardData, cardSelector, handleImageClick) {
         this._name = cardData.name
         this._link = cardData.link
-
+        this._handleImageClick = handleImageClick
         this._cardSelector = cardSelector
     };
 
@@ -53,7 +53,9 @@ export default class Card {
         this._cardElement.querySelector('.elements__trash-button').addEventListener('click', this._handleDelete);
 
         //image preview popup
-        this._cardElement.querySelector('.elements__card-image').addEventListener('click', this._togglePreview);
+        this._cardElement.querySelector('.elements__card-image').addEventListener('click', ()=>{
+            this._handleImageClick({name:this._name, link:this._link});
+        });
     };
 
     _toggleLike = () => {

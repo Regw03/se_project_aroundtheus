@@ -36,7 +36,7 @@ export default class Popup{
     };
 
     setEventListeners(){
-         this.closeButton.addEventListener("click", () => this.closePopup());
+         this.closeButton.addEventListener("click", () => this.close());
          this.popup.addEventListener("click", this._handleOverlayClose);
     }
 
