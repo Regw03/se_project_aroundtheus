@@ -1,10 +1,3 @@
-import {
-    popupImage,
-    popupImageTitle,
-    imagePreview,
-} from "../pages/index.js";
-
-
 export default class Card {
     constructor(cardData, cardSelector, handleImageClick) {
         this._name = cardData.name
@@ -62,12 +55,7 @@ export default class Card {
         this.likeButton.classList.toggle('elements__card-button_active');
     };
 
-    _togglePreview = () => {
-         popupImageTitle.textContent = this._name;
-         popupImage.src = this._link;
-         popupImage.alt = this._name;
-         openPopup(imagePreview);
-    };
+    
 
 };
 
