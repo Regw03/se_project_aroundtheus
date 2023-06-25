@@ -9,7 +9,8 @@ import "./index.css";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
-import PopupWithImage from "../components/PopupWithImage.js"
+import PopupWithImage from "../components/PopupWithImage.js";
+import constants from "../utils/constants.js";
 
 
 /* -------------------------------------------------------------------------- */
@@ -88,7 +89,6 @@ const profileEditPopup = document.querySelector('#edit-popup');
 /*                                 //card form                                */
 /* -------------------------------------------------------------------------- */
 //add popup
-// const addCardPopup = document.querySelector('#add-popup');
 // add button form
 const addCardForm = document.querySelector('#add-form');
 
@@ -195,7 +195,7 @@ function renderCard(cardData) {
     return card.getView();
 };
 
-// initialCards.forEach(renderCard);
+
 
 //cards add form
 
