@@ -1,47 +1,12 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "./index.css";
-// import {
-//     openPopup,
-//     closePopup
-// } from "./scripts/utils.js";
-
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import constants from "../utils/constants.js";
+import {initialCards} from "../utils/constants.js";
 
-
-/* -------------------------------------------------------------------------- */
-/*                               // cards array                               */
-/* -------------------------------------------------------------------------- */
-
-const initialCards = [{
-        name: 'Yosemite Valley',
-        link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
-    },
-    {
-        name: 'Lake Louise',
-        link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg',
-    },
-    {
-        name: 'Bald Mountains',
-        link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg',
-    },
-    {
-        name: 'Latemar',
-        link: 'https://code.s3.yandex.net/web-code/latemar.jpg',
-    },
-    {
-        name: 'Vanoise National Park',
-        link: 'https://code.s3.yandex.net/web-code/vanoise.jpg',
-    },
-    {
-        name: 'Lago di Braies',
-        link: 'https://code.s3.yandex.net/web-code/lago.jpg',
-    },
-];
 
 const cardSelector = '#card-template';
 const cardListEl = document.querySelector('.elements__card-grid');
