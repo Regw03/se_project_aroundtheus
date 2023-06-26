@@ -116,7 +116,6 @@ const addCardPopup = new PopupWithForm('#add-popup', (data) => {
     addCardPopup.close();
     addCardForm.reset();
     const button = document.querySelector("#add_submit");
-    addFormValidator.disableSubmitButton();
 })
 
     addCardPopup.setEventListeners();

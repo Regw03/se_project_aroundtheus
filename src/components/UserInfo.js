@@ -6,7 +6,7 @@ export default class UserInfo{
 
     getUserInfor(){
         return{
-            profession: this.profession,
+            profession: this.profession.textContent,
             name: this.name
         }
 
@@ -14,8 +14,7 @@ export default class UserInfo{
 
     setUserInfo(name, profession){
 
-       this.name = name;
-       this. profession = profession;
-
+       this.name = name.textContent;
+       this.profession = profession;
     }
 }
