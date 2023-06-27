@@ -4,7 +4,7 @@ export default class UserInfo{
         this.profession = profession;
     };
 
-    getUserInfor(){
+    getUserInfo(){
         return{
             profession: this.profession.textContent,
             name: this.name
