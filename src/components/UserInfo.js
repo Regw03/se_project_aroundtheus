@@ -7,7 +7,7 @@ export default class UserInfo{
     getUserInfo(){
         return{
             profession: this.profession.textContent,
-            name: this.name
+            name: this.name.textContent
         }
 
     }
@@ -15,6 +15,6 @@ export default class UserInfo{
     setUserInfo(name, profession){
 
        this.name = name.textContent;
-       this.profession = profession;
+       this.profession = profession.textContent;
     }
 }
