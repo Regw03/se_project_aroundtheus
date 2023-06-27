@@ -99,12 +99,7 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
-const name = document.querySelector('#infoname');
-const profession = document.querySelector('#profession');
 
-const userInfo = new UserInfo(name, profession);
-// const getUserInfo = new getUserInfo();
-// const setUserInfo = new setUserInfo(name, profession);
 
 const addCardPopup = new PopupWithForm('#add-popup', (data) => {
     const card = renderCard({
@@ -127,7 +122,7 @@ const editPopup = new PopupWithForm('#edit-popup', (data) =>{
     editPopup.close();
 
 });
-    editPopup.setEventListeners();
+ 
 
 /* -------------------------------------------------------------------------- */
 /*                            //  profile edit form                           */
@@ -136,7 +131,18 @@ const editPopup = new PopupWithForm('#edit-popup', (data) =>{
 const imagePreviewPopup = new PopupWithImage('#image_preview')
 imagePreviewPopup.setEventListeners();
 
+
 //edit popup is open event
+
+
+const name = document.querySelector('#infoname');
+const profession = document.querySelector('#profession');
+
+const userInfo = new UserInfo(name, profession);
+// const getUserInfo = new getUserInfo();
+// const setUserInfo = new setUserInfo(name, profession);
+
+editPopup.setEventListeners();
 
 profileEditButton.addEventListener('click', function() {
     nameInputValue.value = profileTitle.textContent;
