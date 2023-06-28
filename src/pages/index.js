@@ -112,6 +112,7 @@ const addCardPopup = new PopupWithForm('#add-popup', (data) => {
     // closePopup(addCardPopup);
     addCardPopup.close();
     addCardForm.reset();
+    addFormValidator.disableSubmitButton();
     const button = document.querySelector("#add_submit");
 })
 
@@ -145,8 +146,9 @@ const userInfo = new UserInfo(name, profession);
 editPopup.setEventListeners();
 
 profileEditButton.addEventListener('click', function() {
-    nameInputValue.value = profileTitle.textContent;
-    professionInputValue.value = profileProfession.textContent;
+    const userData = userInfo.getUserInfo();
+    nameInputValue.value = userData.name;
+    professionInputValue.value = userData.profession;
     editPopup.open();
 });
 
@@ -155,7 +157,7 @@ profileEditButton.addEventListener('click', function() {
 
 
 /* -------------------------------------------------------------------------- */
-/*                      // cards ellement / functions                         */
+/*                      // cards element / functions                         */
 /* -------------------------------------------------------------------------- */
 
 function handelImageClick({name, link}){
