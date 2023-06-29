@@ -81,8 +81,6 @@ const name = document.querySelector("#infoname");
 const profession = document.querySelector("#profession");
 
 const userInfo = new UserInfo(name, profession);
-// const getUserInfo = new getUserInfo();
-// const setUserInfo = new setUserInfo(name, profession);
 
 editPopup.setEventListeners();
 
