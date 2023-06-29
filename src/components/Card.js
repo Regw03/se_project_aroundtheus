@@ -32,7 +32,7 @@ export default class Card {
 
     _handleDelete = () => {
         this._cardElement.remove();
-    }
+    };
 
     _setEventListeners() {
 
