@@ -21,6 +21,18 @@
   border-radius: 50%;
 }
 
+.profile__avatar-edit-button {
+  background-color: transparent;
+  box-sizing: border-box;
+  background-image: url(../images/VectorChangeAvatar.png);
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  border: none;
+  margin: 0 auto;
+  position:fixed;
+}
+
 .profile__info-name {
   font-weight: 500;
   font-style: normal;
