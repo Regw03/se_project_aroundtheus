@@ -1,38 +1,56 @@
-class Api {
+export default class Api {
   constructor(options) {
     // constructor body
-  }
+    this.getInitialCards = this.getInitialCards;
+    this.addCards = this.addCards;
+  };
 
-   getInitialCards() {
+  async getInitialCards() {
+    const res = await fetch(
+      "https://around-api.en.tripleten-services.com/v1/cards",
+      {
+        headers: {
+          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
+        },
+      }
+    );
+    if (res.ok) {
+      return res.json();
+    };
 
-   return fetch("https://around-api.en.tripleten-services.com/v1", {
+    return Promise.reject(`Error: ${res.status}`);
+  };
 
-     headers: {
-       authorization: " 4b5610a4-d4fb-4ac3-a0cf-5cf08fc2641b",
-     },
+  async addCards({name, link}) {
+    const res = await fetch(
+      "https://around-api.en.tripleten-services.com/v1/cards",
+      {
+        method: "POST",
+        headers: {
+          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
+          "Content-Type":"application/JSON"
+        },
+        body:JSON.stringify({name, link})
+      }
+    );
+    if (res.ok) {
+      return res.json();
+    };
 
-   })
-   
-   .then((res) => {
+    return Promise.reject(`Error: ${res.status}`);
+  };
 
-     if (res.ok) {
-       return res.json();
-     }
+  };
 
-   });
 
- }
- 
+// other methods for working with the API
 
-  // other methods for working with the API
-}
-
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-
-  headers: {
-    authorization: "4b5610a4-d4fb-4ac3-a0cf-5cf08fc2641b",
-    "Content-Type": "application/json",
-  },
-
-});
+// fetch("https://around-api.en.tripleten-services.com/v1", {
+//   headers: {
+//     authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
+//   },
+// })
+//   .then((res) => res.json())
+//   .then((result) => {
+//     console.log(result);
+//   });

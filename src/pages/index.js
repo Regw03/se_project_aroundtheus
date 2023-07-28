@@ -24,21 +24,10 @@ import {
   linkInputValue,
   settings,
 } from "../utils/constants.js";
+import Api from "../components/Api.js";
 
 const cardSelector = "#card-template";
 const cardListEl = document.querySelector(".elements__card-grid");
-
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = renderCard(item);
-      section.addItem(card);
-    },
-  },
-  ".elements__card-grid"
-);
-section.renderItems();
 
 export const imagePreview = document.querySelector("#image_preview");
 export const popupImage = imagePreview.querySelector(".popup__image");
@@ -52,14 +41,11 @@ const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
 const addCardPopup = new PopupWithForm("#add-popup", (data) => {
-  const card = renderCard({
-    name: data.name,
-    link: data.link,
+  api.addCards(data).then((cardData) => {
+    const card = renderCard(cardData);
+    section.addItem(card);
+    addCardPopup.close();
   });
-
-  section.addItem(card);
-
-  addCardPopup.close();
 });
 
 addCardPopup.setEventListeners();
@@ -97,18 +83,44 @@ profileEditButton.addEventListener("click", function () {
 
 function handelImageClick({ name, link }) {
   imagePreviewPopup.open({ name, link });
-};
+}
 
 function renderCard(cardData) {
   const card = new Card(cardData, cardSelector, handelImageClick);
   return card.getView();
-};
+}
 
 //cards add form
 
 addCardButton.addEventListener("click", function () {
   addFormValidator.disableSubmitButton();
   addCardPopup.open();
+});
+
+//Api object
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+
+  headers: {
+    authorization: "4b5610a4-d4fb-4ac3-a0cf-5cf08fc2641b",
+    "Content-Type": "application/json",
+  },
+});
+
+let section;
+api.getInitialCards().then((cards) => {
+  section = new Section(
+    {
+      items: cards,
+      renderer: (item) => {
+        const card = renderCard(item);
+        section.addItem(card);
+      },
+    },
+    ".elements__card-grid"
+  );
+  section.renderItems();
 });
 
 //create new card
