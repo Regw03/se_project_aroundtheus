@@ -1,0 +1,5 @@
+class PopupWithConfirm extends Popup {
+    constructor (popup, handelFormSubmit) {
+        
+    }
+}

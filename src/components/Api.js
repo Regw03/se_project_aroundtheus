@@ -3,6 +3,7 @@ export default class Api {
     // constructor body
     this.getInitialCards = this.getInitialCards;
     this.addCards = this.addCards;
+    this.editProfile = this.editProfile;
   }
 
   async getInitialCards() {
