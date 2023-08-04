@@ -49,7 +49,9 @@ const addCardPopup = new PopupWithForm("#add-popup", (data) => {
 });
 
 addCardPopup.setEventListeners();
+
 const editPopup = new PopupWithForm("#edit-popup", (data) => {
+  api.editProfile({name:data.name, about:data.profession}).then((userInfo));
   userInfo.setUserInfo(data.name, data.profession);
   editPopup.close();
 });
