@@ -23,11 +23,16 @@ import {
   titleInputValue,
   linkInputValue,
   settings,
+  popupWithDelete,
+  deleteButton,
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 const cardSelector = "#card-template";
 const cardListEl = document.querySelector(".elements__card-grid");
+
+
 
 export const imagePreview = document.querySelector("#image_preview");
 export const popupImage = imagePreview.querySelector(".popup__image");
@@ -39,6 +44,9 @@ const editFormValidator = new FormValidator(settings, popupEditForm);
 editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
+
+const popupWithConfirm = new PopupWithConfirm("#delete_card");
+popupWithConfirm.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-popup", (data) => {
   api.addCards(data).then((cardData) => {
@@ -79,19 +87,24 @@ profileEditButton.addEventListener("click", function () {
   editPopup.open();
 });
 
-/* -------------------------------------------------------------------------- */
-/*                      // cards element / functions                         */
-/* -------------------------------------------------------------------------- */
 
 function handelImageClick({ name, link }) {
   imagePreviewPopup.open({ name, link });
 }
 
 function renderCard(cardData) {
-  const card = new Card(cardData, cardSelector, handelImageClick);
+  const card = new Card(
+    cardData,
+    cardSelector,
+    handelImageClick,
+    handleDeleteClick
+  );
   return card.getView();
 }
 
+function handleDeleteClick(cardId){
+  popupWithConfirm.open();
+};
 //cards add form
 
 addCardButton.addEventListener("click", function () {
