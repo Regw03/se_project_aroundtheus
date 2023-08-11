@@ -23,13 +23,15 @@
 
       <main class="main">
         <section class="profile">
-          <button class="profile__avatar-edit-button" id="edit_avatar" type="button"></button>
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/Avatar.png')%>"
-            alt="avatar image"
-            id="avatar"
-          />
+          <div class="profile__avatar-content">
+            <img
+              class="profile__avatar"
+              src="<%=require('./images/Avatar.png')%>"
+              alt="avatar image"
+              id="avatar"
+            />
+            <button class="profile__avatar-edit-button" id="edit_avatar" type="button"></button>
+          </div>
           <div class="profile__content" id="content">
             <h1 class="profile__info-name" id="infoname">Jacques Cousteau</h1>
             <button class="profile__edit-button" type="button" id="edit"></button>
@@ -162,6 +164,7 @@
         <div class="popup__content">
           <h3 class="popup__title">Are you sure?</h3>
           <button class="popup__close-button" id="delete_card-close-button" type="button"></button>
+          <form class="popup__form" id="popup_delete-card"></form>
           <button class="popup__submit" id="delete_card-submit" type="submit" disabled>Yes</button>
         </div>
       </div>

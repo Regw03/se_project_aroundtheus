@@ -45,8 +45,6 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
 
-const popupWithConfirm = new PopupWithConfirm("#delete_card");
-popupWithConfirm.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-popup", (data) => {
   api.addCards(data).then((cardData) => {
@@ -102,8 +100,14 @@ function renderCard(cardData) {
   return card.getView();
 }
 
+const popupWithConfirm = new PopupWithConfirm("#delete_card");
+popupWithConfirm.setEventListeners();
+
 function handleDeleteClick(cardId){
   popupWithConfirm.open();
+  popupWithConfirm.setSubmitAction(() => {
+    console.log("hi");
+  })
 };
 //cards add form
 
