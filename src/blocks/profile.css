@@ -20,6 +20,12 @@
   border-radius: 50%;
   position: relative
 }
+
+.profile__avatar-content:hover .profile__avatar-edit-button {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .profile__avatar {
   max-width: 120px;
   max-height: 120px;
@@ -45,10 +51,7 @@
   right:0;
 }
 
-.profile__avatar-edit-button:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
+
 
 .profile__info-name {
   font-weight: 500;

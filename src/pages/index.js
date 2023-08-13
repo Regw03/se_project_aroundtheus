@@ -95,7 +95,7 @@ function renderCard(cardData) {
     cardData,
     cardSelector,
     handelImageClick,
-    handleDeleteClick
+    handleDeleteClick,
   );
   return card.getView();
 }
@@ -106,7 +106,8 @@ popupWithConfirm.setEventListeners();
 function handleDeleteClick(cardId){
   popupWithConfirm.open();
   popupWithConfirm.setSubmitAction(() => {
-    console.log("hi");
+    api.deleteCard({cardId});
+    popupWithConfirm.close();
   })
 };
 //cards add form

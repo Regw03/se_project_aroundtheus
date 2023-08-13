@@ -59,6 +59,25 @@ export default class Api {
 
     return Promise.reject(`Error: ${res.status}`);
   }
+
+  async deleteCard({cardId}) {
+    const res = await fetch(
+      "https://around-api.en.tripleten-services.com/v1/cards/cardID",
+      {
+        method: "DELETE",
+        headers: {
+          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
+          "Content-Type": "application/JSON",
+        },
+      }
+    );
+    if (res.ok) {
+      return res.json(cardId);
+    }
+
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
 }
 
 // other methods for working with the API
