@@ -62,7 +62,7 @@ export default class Api {
 
   async deleteCard({cardId}) {
     const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/cardID",
+      "https://around-api.en.tripleten-services.com/v1/cards/"+cardId,
       {
         method: "DELETE",
         headers: {
@@ -72,7 +72,7 @@ export default class Api {
       }
     );
     if (res.ok) {
-      return res.json(cardId);
+      return res.json();
     }
 
     return Promise.reject(`Error: ${res.status}`);

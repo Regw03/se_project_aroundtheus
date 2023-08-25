@@ -106,7 +106,9 @@ popupWithConfirm.setEventListeners();
 function handleDeleteClick(cardId){
   popupWithConfirm.open();
   popupWithConfirm.setSubmitAction(() => {
-    api.deleteCard({cardId});
+    api.deleteCard({cardId}).then(() => {
+      this.handleDelete();
+    })
     popupWithConfirm.close();
   })
 };
