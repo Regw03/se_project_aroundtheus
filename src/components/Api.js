@@ -4,6 +4,7 @@ export default class Api {
     this.getInitialCards = this.getInitialCards;
     this.addCards = this.addCards;
     this.editProfile = this.editProfile;
+    this.likeButton = this.likeButton;
   }
 
   async getInitialCards() {
@@ -60,9 +61,9 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  async deleteCard({cardId}) {
+  async deleteCard({ cardId }) {
     const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/"+cardId,
+      "https://around-api.en.tripleten-services.com/v1/cards/" + cardId,
       {
         method: "DELETE",
         headers: {
@@ -78,6 +79,41 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
+  async addLike({ cardId, likeButton }) {
+    const res = await fetch(
+      "https://around-api.en.tripleten-services.com/v1/cards/cardId/likes",
+      {
+        method: "PUT",
+        headers: {
+          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
+          "Content-Type": "application/JSON",
+        },
+      }
+    );
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
+  async removeLike({ cardId, likeButton }) {
+    const res = await fetch(
+      "https://around-api.en.tripleten-services.com/v1/cards/cardId/likes",
+      {
+        method: "DELETE",
+        headers: {
+          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
+          "Content-Type": "application/JSON",
+        },
+      }
+    );
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Error: ${res.status}`);
+  }
 }
 
 // other methods for working with the API
