@@ -86,13 +86,13 @@ profileEditButton.addEventListener("click", function () {
 });
 
 
-const addLike = new addLike(".likeButton", ()=> {
-  api.addLike({cardId, likeButton })
-});
+// const addLike = new addLike(".likeButton", ()=> {
+//   api.addLike({cardId, likeButton })
+// });
 
-const removeLike = new removeLike(".likeButton", () => {
-  api.removeLike({cardId, likeButton})
-});
+// const removeLike = new removeLike(".likeButton", () => {
+//   api.removeLike({cardId, likeButton})
+// });
 
 
 function handelImageClick({ name, link }) {
