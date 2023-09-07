@@ -79,7 +79,7 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  async addLike({ cardId, likeButton }) {
+  async addLike({ cardId, likeButton}) {
     const res = await fetch(
       "https://around-api.en.tripleten-services.com/v1/cards/cardId/likes",
       {
