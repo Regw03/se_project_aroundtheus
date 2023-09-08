@@ -32,8 +32,6 @@ import PopupWithConfirm from "../components/PopupWithConfirm.js";
 const cardSelector = "#card-template";
 const cardListEl = document.querySelector(".elements__card-grid");
 
-
-
 export const imagePreview = document.querySelector("#image_preview");
 export const popupImage = imagePreview.querySelector(".popup__image");
 export const popupImageTitle = imagePreview.querySelector(
@@ -44,7 +42,6 @@ const editFormValidator = new FormValidator(settings, popupEditForm);
 editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
-
 
 const addCardPopup = new PopupWithForm("#add-popup", (data) => {
   api.addCards(data).then((cardData) => {
@@ -57,8 +54,10 @@ const addCardPopup = new PopupWithForm("#add-popup", (data) => {
 addCardPopup.setEventListeners();
 
 const editPopup = new PopupWithForm("#edit-popup", (data) => {
-  api.editProfile({name:data.name, about:data.profession}).then((userInfo));
-  userInfo.setUserInfo(data.name, data.profession);
+  api.editProfile({ name: data.name, about: data.profession }).then((user) => {
+    userInfo.setUserInfo(user.name, user.about);
+  });
+
   editPopup.close();
 });
 
@@ -85,16 +84,6 @@ profileEditButton.addEventListener("click", function () {
   editPopup.open();
 });
 
-
-// const addLike = new addLike(".likeButton", ()=> {
-//   api.addLike({cardId, likeButton })
-// });
-
-// const removeLike = new removeLike(".likeButton", () => {
-//   api.removeLike({cardId, likeButton})
-// });
-
-
 function handelImageClick({ name, link }) {
   imagePreviewPopup.open({ name, link });
 }
@@ -105,6 +94,7 @@ function renderCard(cardData) {
     cardSelector,
     handelImageClick,
     handleDeleteClick,
+    handleLikeClick
   );
   return card.getView();
 }
@@ -112,15 +102,28 @@ function renderCard(cardData) {
 const popupWithConfirm = new PopupWithConfirm("#delete_card");
 popupWithConfirm.setEventListeners();
 
-function handleDeleteClick(cardId){
+function handleDeleteClick(cardId) {
   popupWithConfirm.open();
   popupWithConfirm.setSubmitAction(() => {
-    api.deleteCard({cardId}).then(() => {
+    api.deleteCard({ cardId }).then(() => {
       this.handleDelete();
-    })
+    });
     popupWithConfirm.close();
-  })
-};
+  });
+}
+
+function handleLikeClick(cardId) {
+  if (this._isLiked) {
+    api.removeLike(cardId).then(() => {
+      this.handleLike(false);
+    });
+  } else {
+    api.addLike(cardId).then(() => {
+      this.handleLike(true);
+    });
+  }
+}
+
 //cards add form
 
 addCardButton.addEventListener("click", function () {
@@ -152,6 +155,10 @@ api.getInitialCards().then((cards) => {
     ".elements__card-grid"
   );
   section.renderItems();
+});
+
+api.getUserInfo().then((user) => {
+  userInfo.setUserInfo(user.name, user.about);
 });
 
 //create new card

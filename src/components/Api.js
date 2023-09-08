@@ -5,6 +5,8 @@ export default class Api {
     this.addCards = this.addCards;
     this.editProfile = this.editProfile;
     this.likeButton = this.likeButton;
+    this.addLike = this.addLike;
+    this.removeLike = this.removeLike;
   }
 
   async getInitialCards() {
@@ -33,6 +35,23 @@ export default class Api {
           "Content-Type": "application/JSON",
         },
         body: JSON.stringify({ name, link }),
+      }
+    );
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
+  async getUserInfo() {
+    const res = await fetch(
+      "https://around-api.en.tripleten-services.com/v1/users/me",
+      {
+        headers: {
+          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
+          "Content-Type": "application/JSON",
+        },
       }
     );
     if (res.ok) {
@@ -79,9 +98,9 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  async addLike({ cardId, likeButton}) {
+  async addLike(cardId) {
     const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/cardId/likes",
+      "https://around-api.en.tripleten-services.com/v1/cards/" + cardId + "/likes",
       {
         method: "PUT",
         headers: {
@@ -97,9 +116,9 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  async removeLike({ cardId, likeButton }) {
+  async removeLike(cardId) {
     const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/cardId/likes",
+      "https://around-api.en.tripleten-services.com/v1/cards/" + cardId + "/likes",
       {
         method: "DELETE",
         headers: {
