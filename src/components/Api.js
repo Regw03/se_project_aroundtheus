@@ -133,16 +133,28 @@ export default class Api {
 
     return Promise.reject(`Error: ${res.status}`);
   }
+
+
+  async changeAvatar( link ) {
+    const res = await fetch(
+      "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
+      {
+        method: "PATCH",
+        headers: {
+          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
+          "Content-Type": "application/JSON",
+        },
+        body: JSON.stringify({ link }),
+      }
+    );
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Error: ${res.status}`);
+    }
 }
 
-// other methods for working with the API
 
-// fetch("https://around-api.en.tripleten-services.com/v1", {
-//   headers: {
-//     authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-//   },
-// })
-//   .then((res) => res.json())
-//   .then((result) => {
-//     console.log(result);
-//   });
+
+

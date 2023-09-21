@@ -25,6 +25,8 @@ import {
   settings,
   popupWithDelete,
   deleteButton,
+  avatarEditButton,
+  avatarEditForm,
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
@@ -42,6 +44,8 @@ const editFormValidator = new FormValidator(settings, popupEditForm);
 editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addCardForm);
 addFormValidator.enableValidation();
+const avatarFormValidator = new FormValidator(settings, avatarEditForm);
+avatarFormValidator.enableValidation();
 
 const addCardPopup = new PopupWithForm("#add-popup", (data) => {
   api.addCards(data).then((cardData) => {
@@ -60,6 +64,25 @@ const editPopup = new PopupWithForm("#edit-popup", (data) => {
 
   editPopup.close();
 });
+
+//avatar change below
+
+const avatarEditPopup = new PopupWithForm("#change_avatar", (data) => {
+  api.changeAvatar(data).then((name: data.link) => {
+    
+  })
+avatarEditPopup.close();
+});
+
+
+
+avatarEditButton.setEventListeners("click", function () {
+  avatarEditPopup.open();
+  avatarEditPopup.setEventListeners();
+});
+
+
+
 
 /* -------------------------------------------------------------------------- */
 /*                            //  profile edit form                           */

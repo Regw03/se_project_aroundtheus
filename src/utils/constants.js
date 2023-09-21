@@ -53,7 +53,11 @@ export const addCardForm = document.querySelector('#add-form');
 
 //edit form data
 export const nameInputValue = popupEditForm.querySelector('#name-input');
-export const professionInputValue = popupEditForm.querySelector('#profession-input', );
+export const professionInputValue = popupEditForm.querySelector('#profession-input');
+
+//avatar editor
+export const avatarEditButton = document.querySelector(".profile__avatar-edit-button");
+export const avatarEditForm = document.querySelector("#change_avatar-form");
 
 //card add form data
 export const titleInputValue = addCardForm.querySelector('#add_title-input');
