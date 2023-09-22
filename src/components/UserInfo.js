@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor(name, profession) {
+  constructor(name, profession, avatar) {
     this.name = name;
     this.profession = profession;
+    this.link = avatar;
   };
 
   getUserInfo() {
@@ -15,4 +16,14 @@ export default class UserInfo {
     this.name.textContent = name;
     this.profession.textContent = profession;
   };
+
+
+  setAvatarImgInfo(link) {
+    this.link.src = link
+  };
+
+
+
 };
+
+

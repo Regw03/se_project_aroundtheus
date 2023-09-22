@@ -48,9 +48,11 @@ const avatarFormValidator = new FormValidator(settings, avatarEditForm);
 avatarFormValidator.enableValidation();
 
 const addCardPopup = new PopupWithForm("#add-popup", (data) => {
+  addCardPopup.renderLoading(true);
   api.addCards(data).then((cardData) => {
     const card = renderCard(cardData);
     section.addItem(card);
+    addCardPopup.renderLoading(false);
     addCardPopup.close();
   });
 });
@@ -58,8 +60,10 @@ const addCardPopup = new PopupWithForm("#add-popup", (data) => {
 addCardPopup.setEventListeners();
 
 const editPopup = new PopupWithForm("#edit-popup", (data) => {
+  editPopup.renderLoading(true);
   api.editProfile({ name: data.name, about: data.profession }).then((user) => {
     userInfo.setUserInfo(user.name, user.about);
+    editPopup.renderLoading(false);
   });
 
   editPopup.close();
@@ -68,17 +72,19 @@ const editPopup = new PopupWithForm("#edit-popup", (data) => {
 //avatar change below
 
 const avatarEditPopup = new PopupWithForm("#change_avatar", (data) => {
-  api.changeAvatar(data).then((name: data.link) => {
-    
-  })
-avatarEditPopup.close();
+  avatarEditPopup.renderLoading(true);
+  api.changeAvatar(data).then(res => {
+    console.log(res);
+    userInfo.setAvatarImgInfo(res.avatar);
+    avatarEditPopup.renderLoading(false);
+    avatarEditPopup.close();
+  });
 });
+avatarEditPopup.setEventListeners();
 
-
-
-avatarEditButton.setEventListeners("click", function () {
+avatarEditButton.addEventListener("click", function () {
   avatarEditPopup.open();
-  avatarEditPopup.setEventListeners();
+  
 });
 
 
@@ -92,11 +98,11 @@ const imagePreviewPopup = new PopupWithImage("#image_preview");
 imagePreviewPopup.setEventListeners();
 
 //edit popup is open event
-
+const avatar = document.querySelector(".profile__avatar");
 const name = document.querySelector("#infoname");
 const profession = document.querySelector("#profession");
 
-const userInfo = new UserInfo(name, profession);
+const userInfo = new UserInfo(name, profession, avatar);
 
 editPopup.setEventListeners();
 
@@ -182,6 +188,7 @@ api.getInitialCards().then((cards) => {
 
 api.getUserInfo().then((user) => {
   userInfo.setUserInfo(user.name, user.about);
+  userInfo.setAvatarImgInfo(user.avatar);
 });
 
 //create new card

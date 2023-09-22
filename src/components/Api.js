@@ -135,7 +135,7 @@ export default class Api {
   }
 
 
-  async changeAvatar( link ) {
+  async changeAvatar( {link} ) {
     const res = await fetch(
       "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
       {
@@ -144,7 +144,7 @@ export default class Api {
           authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
           "Content-Type": "application/JSON",
         },
-        body: JSON.stringify({ link }),
+        body: JSON.stringify({ avatar: link }),
       }
     );
     if (res.ok) {
