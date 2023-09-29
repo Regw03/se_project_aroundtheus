@@ -18,21 +18,29 @@
   max-width: 120px;
   max-height: 120px;
   border-radius: 50%;
-  position: relative
+  position: relative;
 }
+
+.profile__avatar-content:hover {
+ opacity: 60%;
+}
+
 
 .profile__avatar-content:hover .profile__avatar-edit-button {
   opacity: 1;
   cursor: pointer;
+  
 }
 
 .profile__avatar {
-  max-width: 120px;
-  max-height: 120px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   justify-self:center;
   margin: 0 auto;
 }
+
+
 
 .profile__avatar-edit-button {
   background-color: transparent;

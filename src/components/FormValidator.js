@@ -4,7 +4,6 @@ class FormValidator {
   constructor(settings, formEl) {
     this._settings = settings;
     this._form = formEl;
-    this._avatarEditForm = avatarEditForm;
   };
 
   _setEventListeners() {

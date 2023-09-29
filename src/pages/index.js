@@ -52,9 +52,12 @@ const addCardPopup = new PopupWithForm("#add-popup", (data) => {
   api.addCards(data).then((cardData) => {
     const card = renderCard(cardData);
     section.addItem(card);
-    addCardPopup.renderLoading(false);
     addCardPopup.close();
-  });
+  }).finally(()=> {
+    addCardPopup.renderLoading(false);
+  }).catch((error)=> {
+    console.log(error)
+  })
 });
 
 addCardPopup.setEventListeners();
@@ -63,9 +66,11 @@ const editPopup = new PopupWithForm("#edit-popup", (data) => {
   editPopup.renderLoading(true);
   api.editProfile({ name: data.name, about: data.profession }).then((user) => {
     userInfo.setUserInfo(user.name, user.about);
+  }).finally(() => {
     editPopup.renderLoading(false);
+  }).catch((error) => {
+    console.log(error);
   });
-
   editPopup.close();
 });
 
@@ -76,8 +81,11 @@ const avatarEditPopup = new PopupWithForm("#change_avatar", (data) => {
   api.changeAvatar(data).then(res => {
     console.log(res);
     userInfo.setAvatarImgInfo(res.avatar);
-    avatarEditPopup.renderLoading(false);
     avatarEditPopup.close();
+  }).finally(() => {
+    avatarEditPopup.renderLoading(false);
+  }).catch((error) => {
+    console.log(error);
   });
 });
 avatarEditPopup.setEventListeners();
@@ -132,10 +140,17 @@ const popupWithConfirm = new PopupWithConfirm("#delete_card");
 popupWithConfirm.setEventListeners();
 
 function handleDeleteClick(cardId) {
+  
   popupWithConfirm.open();
   popupWithConfirm.setSubmitAction(() => {
+    popupWithConfirm.renderSaving(true);
     api.deleteCard({ cardId }).then(() => {
       this.handleDelete();
+      
+    }).finally(() => {
+      popupWithConfirm.renderSaving(false);
+    }).catch((error) => {
+      console.log(error);
     });
     popupWithConfirm.close();
   });
@@ -166,7 +181,7 @@ const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
 
   headers: {
-    authorization: "4b5610a4-d4fb-4ac3-a0cf-5cf08fc2641b",
+    authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
     "Content-Type": "application/json",
   },
 });

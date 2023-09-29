@@ -1,158 +1,81 @@
 export default class Api {
   constructor(options) {
     // constructor body
-    this.getInitialCards = this.getInitialCards;
-    this.addCards = this.addCards;
-    this.editProfile = this.editProfile;
-    this.likeButton = this.likeButton;
-    this.addLike = this.addLike;
-    this.removeLike = this.removeLike;
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
   }
 
-  async getInitialCards() {
-    const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards",
-      {
-        headers: {
-          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-        },
-      }
-    );
+  _processResponse = (res) => {
     if (res.ok) {
       return res.json();
     }
-
     return Promise.reject(`Error: ${res.status}`);
+  };
+
+  async getInitialCards() {
+    const res = await fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    });
+    return this._processResponse(res);
   }
 
   async addCards({ name, link }) {
-    const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards",
-      {
-        method: "POST",
-        headers: {
-          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-          "Content-Type": "application/JSON",
-        },
-        body: JSON.stringify({ name, link }),
-      }
-    );
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
+    const res = await fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({ name, link }),
+    });
+    return this._processResponse(res);
   }
 
   async getUserInfo() {
-    const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/users/me",
-      {
-        headers: {
-          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-          "Content-Type": "application/JSON",
-        },
-      }
-    );
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
+    const res = await fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    });
+    return this._processResponse(res);
   }
 
   async editProfile({ name, about }) {
-    const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/users/me",
-      {
-        method: "PATCH",
-        headers: {
-          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-          "Content-Type": "application/JSON",
-        },
-        body: JSON.stringify({ name, about }),
-      }
-    );
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
+    const res = await fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ name, about }),
+    });
+    return this._processResponse(res);
   }
 
   async deleteCard({ cardId }) {
-    const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/" + cardId,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-          "Content-Type": "application/JSON",
-        },
-      }
-    );
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
+    const res = await fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    });
+    return this._processResponse(res);
   }
 
   async addLike(cardId) {
-    const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/" + cardId + "/likes",
-      {
-        method: "PUT",
-        headers: {
-          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-          "Content-Type": "application/JSON",
-        },
-      }
-    );
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
+    const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    });
+    return this._processResponse(res);
   }
 
   async removeLike(cardId) {
-    const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/cards/" + cardId + "/likes",
-      {
-        method: "DELETE",
-        headers: {
-          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-          "Content-Type": "application/JSON",
-        },
-      }
-    );
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
+    const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    });
+    return this._processResponse(res);
   }
 
-
-  async changeAvatar( {link} ) {
-    const res = await fetch(
-      "https://around-api.en.tripleten-services.com/v1/users/me/avatar",
-      {
-        method: "PATCH",
-        headers: {
-          authorization: "b38ed4d6-3275-4538-846d-7ec5d56fd185",
-          "Content-Type": "application/JSON",
-        },
-        body: JSON.stringify({ avatar: link }),
-      }
-    );
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Error: ${res.status}`);
-    }
+  async changeAvatar({ link }) {
+    const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ avatar: link }),
+    });
+    return this._processResponse(res);
+  }
 }
 
 
