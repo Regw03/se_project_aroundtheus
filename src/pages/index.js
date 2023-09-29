@@ -161,6 +161,8 @@ function handleLikeClick(cardId) {
   if (this._isLiked) {
     api.removeLike(cardId).then(() => {
       this.handleLike(false);
+    }).catch((error) => {
+      console.log(error);
     });
   } else {
     api.addLike(cardId).then(() => {
@@ -200,11 +202,15 @@ api.getInitialCards().then((cards) => {
     ".elements__card-grid"
   );
   section.renderItems();
+}).catch((error) => {
+  console.log(error);
 });
 
 api.getUserInfo().then((user) => {
   userInfo.setUserInfo(user.name, user.about);
   userInfo.setAvatarImgInfo(user.avatar);
+}).catch((error) => {
+  console.log(error)
 });
 
 //create new card
