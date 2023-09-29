@@ -66,12 +66,13 @@ const editPopup = new PopupWithForm("#edit-popup", (data) => {
   editPopup.renderLoading(true);
   api.editProfile({ name: data.name, about: data.profession }).then((user) => {
     userInfo.setUserInfo(user.name, user.about);
+    editPopup.close();
   }).finally(() => {
     editPopup.renderLoading(false);
   }).catch((error) => {
     console.log(error);
   });
-  editPopup.close();
+  
 });
 
 //avatar change below
@@ -146,13 +147,13 @@ function handleDeleteClick(cardId) {
     popupWithConfirm.renderSaving(true);
     api.deleteCard({ cardId }).then(() => {
       this.handleDelete();
-      
+      popupWithConfirm.close();
     }).finally(() => {
       popupWithConfirm.renderSaving(false);
     }).catch((error) => {
       console.log(error);
     });
-    popupWithConfirm.close();
+    
   });
 }
 
