@@ -167,6 +167,8 @@ function handleLikeClick(cardId) {
   } else {
     api.addLike(cardId).then(() => {
       this.handleLike(true);
+    }).catch((error) => {
+      console.log(error);
     });
   }
 }
