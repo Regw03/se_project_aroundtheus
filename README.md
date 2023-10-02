@@ -7,7 +7,8 @@
 * Images  
 * HTML, CSS, JavaScript
 * functional popup 
-* JS modules/ object oriented programming 
+* JS modules/ object oriented programming
+* API integration
   
 **Figma**  
   
@@ -15,6 +16,6 @@
 
 **Description**
 This project was completed in the TripleTen software engineering bootcamp. The title of the project is Around the US
-This project contains the Use of HTML CSS JavaScript and Modules to make the code cleaner at the current point it is filled with the content of sprints 4-8 and will continue to be added onto and refactored with my continuation of the program. 
+This project contains the Use of HTML CSS JavaScript and Modules to make the code cleaner, as well as API integration. This project contains the contents of sprints 4-9. This project has been incredibly fun and chanlenging. And I look forword to whats left in the program. 
  
  Here is the link to the live page https://regw03.github.io/se_project_aroundtheus/ 
