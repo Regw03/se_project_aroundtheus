@@ -14,12 +14,52 @@
   margin: 0;
   align-content: center;
 }
-
-.profile__avatar {
+.profile__avatar-content {
   max-width: 120px;
   max-height: 120px;
   border-radius: 50%;
+  position: relative;
 }
+
+.profile__avatar-content:hover {
+ opacity: 60%;
+}
+
+
+.profile__avatar-content:hover .profile__avatar-edit-button {
+  opacity: 1;
+  cursor: pointer;
+  
+}
+
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  justify-self:center;
+  margin: 0 auto;
+}
+
+
+
+.profile__avatar-edit-button {
+  background-color: transparent;
+  box-sizing: border-box;
+  background-image: url(../images/VectorChangeAvatar.png);
+  background-repeat: no-repeat;
+  width: 26px;
+  height: 26px;
+  border: none;
+  opacity: 0;
+  position: absolute;
+  margin:auto;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+
 
 .profile__info-name {
   font-weight: 500;
